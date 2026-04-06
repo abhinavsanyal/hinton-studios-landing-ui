@@ -1,0 +1,252 @@
+/* Hinton Studios — shared visual language */
+
+:root {
+  --surface: #000000;
+  --tertiary: #9093ff;
+  --outline: #767575;
+  --outline-variant: #484848;
+  --primary: #c6c6c6;
+}
+
+html, body { background-color: #000000; color: #e7e5e4; }
+body { font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Film grain overlay — persistent cinematic texture */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.04;
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC77pbjsDBEcD7VE5lmoppgRIICY1LzmPa8GKeCr1c9HNiPgwAM5NRZLPbzJJFuspki8_n6JqPBAlj7UwwKPQPbttloKP_9jUYMPoVdQxWaFGGtrtpIaHgNAoDr-diTf8yMQqt-O7HpIwDh3NC5vEQSogcU6XlrX3OhjCym3N8XlSeB30KneBLin_rZTNlNUDRkl7OkGLKOMtO2fvx8AfjaDhbzYXHDIOL1fmG8wllJasUuDzf0Js2DkWp8jn9vQ0K5ZYOyW85xNyWz");
+  mix-blend-mode: overlay;
+}
+
+/* Viewfinder corners */
+.viewfinder-corner::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-top: 1px solid rgba(198, 198, 198, 0.4);
+  border-left: 1px solid rgba(198, 198, 198, 0.4);
+  top: 20px;
+  left: 20px;
+  pointer-events: none;
+}
+.viewfinder-corner::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-bottom: 1px solid rgba(198, 198, 198, 0.4);
+  border-right: 1px solid rgba(198, 198, 198, 0.4);
+  bottom: 20px;
+  right: 20px;
+  pointer-events: none;
+}
+
+/* Cinematic color grading overlays */
+.cinematic-grade-teal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(20, 184, 166, 0.08), rgba(249, 115, 22, 0.08));
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.cinematic-grade-mono { position: relative; }
+.cinematic-grade-mono::after {
+  content: ''; position: absolute; inset: 0;
+  background: black; mix-blend-mode: color; pointer-events: none;
+}
+
+.overlap-text { text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+.cinematic-shadow { box-shadow: 0 40px 100px -20px rgba(144, 147, 255, 0.08); }
+
+/* Monitor brackets — corner accents on main sections */
+.monitor-bracket {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(144, 147, 255, 0.3);
+  z-index: 40;
+}
+.corner-tl { top: 40px; left: 40px; border-top-width: 1px; border-left-width: 1px; border-top-style: solid; border-left-style: solid; }
+.corner-tr { top: 40px; right: 40px; border-top-width: 1px; border-right-width: 1px; border-top-style: solid; border-right-style: solid; }
+.corner-bl { bottom: 40px; left: 40px; border-bottom-width: 1px; border-left-width: 1px; border-bottom-style: solid; border-left-style: solid; }
+.corner-br { bottom: 40px; right: 40px; border-bottom-width: 1px; border-right-width: 1px; border-bottom-style: solid; border-right-style: solid; }
+
+/* Outlined process numerals */
+.outlined-num {
+  -webkit-text-stroke: 1px rgba(144, 147, 255, 0.4);
+  color: transparent;
+  font-size: clamp(8rem, 20vw, 16rem);
+  line-height: 1;
+  z-index: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+/* Soft pulse animation */
+@keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+.animate-pulse-soft { animation: pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* Animated connector line */
+@keyframes dash { to { stroke-dashoffset: 0; } }
+.animated-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 5s linear forwards;
+}
+
+/* Stage image overlay */
+.stage-image-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(14, 14, 14, 0.8));
+  pointer-events: none;
+}
+
+/* Reveal on scroll */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: #9093ff;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 60;
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #000000; }
+::-webkit-scrollbar-thumb { background: #262626; }
+::-webkit-scrollbar-thumb:hover { background: #484848; }
+
+/* Focus ring reset for form inputs */
+input:focus, textarea:focus { outline: none; }
+
+/* =========================================================
+   Apple-style glass layer (additive — does not alter design)
+   ========================================================= */
+.glass-pane {
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background-color: rgba(14, 14, 14, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 30px 80px -30px rgba(0, 0, 0, 0.6);
+}
+.glass-nav {
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+}
+.glass-card {
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 1px 0 rgba(255, 255, 255, 0.02);
+}
+.glass-sheen {
+  position: relative;
+}
+.glass-sheen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.015) 30%,
+    transparent 55%
+  );
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Three.js hero canvas — sits behind content, above background imagery */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+/* Magnetic + motion targets */
+[data-magnetic] { transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1); }
+[data-tilt] { transform-style: preserve-3d; transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* =========================================================
+   VFX LAYER — Grain + Vignette (zero-cost, no blend modes)
+   ========================================================= */
+
+/* Grain — static tiled noise, no blend mode, no animation */
+#vfx-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.22;
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  contain: strict;
+}
+
+/* Vignette — darkened corners, pure CSS */
+#vfx-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.2) 85%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  contain: strict;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-magnetic], [data-parallax], [data-tilt] { transition: none !important; transform: none !important; }
+  #hero-canvas { display: none; }
+  .animated-path { animation: none; stroke-dashoffset: 0; }
+  #vfx-grain, #vfx-vignette { display: none; }
+}
+
+/* Hero Carousel Animation */
+@keyframes slowPan {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-slow-pan {
+  animation: slowPan 90s linear infinite;
+  will-change: transform;
+}

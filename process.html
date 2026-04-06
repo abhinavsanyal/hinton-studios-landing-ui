@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hinton Studios — Our Process</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="assets/tailwind-config.js"></script>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="selection:bg-tertiary selection:text-black">
+  <div class="fixed top-0 z-[-2] h-screen w-screen bg-[#030303] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(100,99,160,0.15),rgba(255,255,255,0))]"></div>
+  <div class="fixed inset-0 z-[-1] pointer-events-none opacity-[0.10] mix-blend-screen bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+
+  <div id="scroll-progress"></div>
+
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-6 bg-[#030303]/40 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <a href="index.html" class="text-2xl font-bold tracking-tighter text-[#c6c6c6] font-headline uppercase">HINTON STUDIOS</a>
+    <div class="hidden md:flex items-center gap-10 font-headline tracking-tight uppercase text-[12px] font-medium">
+      <a data-nav="work.html" href="work.html" class="hover:text-[#9093ff] transition-all duration-300">Work</a>
+      <a data-nav="process.html" href="process.html" class="hover:text-[#9093ff] transition-all duration-300">Process</a>
+      <a data-nav="services.html" href="services.html" class="hover:text-[#9093ff] transition-all duration-300">Services</a>
+      <a data-nav="index.html" href="index.html" class="hover:text-[#9093ff] transition-all duration-300">About</a>
+      <a data-nav="services.html#contact" href="services.html#contact" class="hover:text-[#9093ff] transition-all duration-300">Contact</a>
+    </div>
+    <a href="services.html#contact" class="bg-primary text-on-primary font-headline font-bold px-6 py-2 text-[10px] tracking-widest uppercase hover:bg-white transition-all duration-300 active:scale-95">
+      START PROJECT
+    </a>
+  </nav>
+
+  <main class="pt-32">
+    <!-- Hero Title -->
+    <section class="px-6 md:px-12 mb-24 max-w-7xl mx-auto" data-reveal>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+        <div>
+          <span class="font-label text-[11px] uppercase tracking-[0.3em] text-tertiary mb-6 block font-bold">The Methodology</span>
+          <h1 class="font-headline text-5xl md:text-9xl font-bold tracking-tighter uppercase leading-[0.85] text-on-surface">The Digital<br />Auteur</h1>
+        </div>
+        <div class="pb-4">
+          <p class="font-body text-xl text-outline max-w-md leading-relaxed border-l-2 border-tertiary/30 pl-8">
+            We blend high-stakes prestige filmmaking with ethereal generative AI precision. Our process is a symphony of human intent and machine imagination.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="relative px-6 md:px-12 py-32 bg-surface-container-low min-h-screen overflow-visible">
+      <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(112,115,255,0.05),transparent_70%)] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto relative">
+        <!-- Connector SVG -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-visible hidden lg:block">
+          <svg class="opacity-30 w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1200 1800" xmlns="http://www.w3.org/2000/svg">
+            <path class="animated-path" d="M100 150 Q 600 300, 400 700 T 1100 1300" stroke="url(#paint0_linear_process)" stroke-dasharray="10 10" stroke-width="1.5"></path>
+            <defs>
+              <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_process" x1="100" x2="1100" y1="150" y2="1300">
+                <stop stop-color="#9093ff"></stop>
+                <stop offset="0.5" stop-color="#6063ee"></stop>
+                <stop offset="1" stop-color="#c6c6c6"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="flex flex-col gap-48 lg:gap-80">
+          <!-- Stage 1 -->
+          <div class="flex flex-col lg:flex-row gap-16 items-center relative z-10 group" data-reveal>
+            <div class="absolute -left-10 md:-left-20 -top-12 md:-top-20 outlined-num select-none pointer-events-none opacity-20 transition-all duration-700 group-hover:opacity-40 group-hover:translate-x-10">01</div>
+            <div class="w-full lg:w-3/5 order-2 lg:order-1">
+              <div class="relative aspect-video stage-image-container overflow-hidden">
+                <div class="absolute -top-4 -left-4 viewfinder-corner" style="border-top:2px solid rgba(198,198,198,.4); border-left:2px solid rgba(198,198,198,.4); width:24px; height:24px; z-index:20;"></div>
+                <div class="absolute -bottom-4 -right-4" style="border-bottom:2px solid rgba(198,198,198,.4); border-right:2px solid rgba(198,198,198,.4); width:24px; height:24px; z-index:20;"></div>
+                <img alt="" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxdvv5Z5SRk9wOT2vBk0GIqc6pVUSnwN8ydDphTIjo50eLyKJh9ZG-fC41FcisPkS4j-QY9okLMwVCJ-mNK3UyfMUgNUxnihPHWJvhbOLWL-BQelJXTfz3pml99U69mvRol5ZqRF3AH28G03_CIHuJFYcBn9R0wIt25dqGuEvY6aBwIYaioOmDdNaIcyA2jHvLiCQFSizmVPvmCaPrwoKyuNNejnU7AGVDXgUuDATRxlHhvaGRBgKkqv2HcB_XIrpf4wSGYgWTsrP6" />
+                <div class="absolute inset-0 bg-surface/30 mix-blend-overlay group-hover:bg-transparent transition-colors duration-700"></div>
+              </div>
+            </div>
+            <div class="w-full lg:w-2/5 order-1 lg:order-2 lg:pl-4">
+              <span class="font-label text-xs text-tertiary mb-3 block tracking-widest uppercase font-bold">Stage 01</span>
+              <h2 class="font-headline text-4xl md:text-6xl font-bold tracking-tighter uppercase mb-6 leading-tight">Ideation &amp;<br />Prompting</h2>
+              <p class="font-body text-lg text-on-surface-variant leading-relaxed mb-6 italic opacity-80">"The first brushstroke is a word; the first lens is an algorithm."</p>
+              <p class="font-body text-base text-outline leading-relaxed mb-8">We distill cinematic concepts into hyper-specific narrative prompts. Defining lighting geometry, camera velocity, and psychological subtext before the first pixel exists.</p>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-1.5 border border-outline-variant text-[10px] font-label uppercase tracking-widest text-primary bg-surface/50 backdrop-blur">Latent Mapping</span>
+                <span class="px-4 py-1.5 border border-outline-variant text-[10px] font-label uppercase tracking-widest text-primary bg-surface/50 backdrop-blur">Visual Syntax</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="flex flex-col lg:flex-row gap-16 items-center relative z-10 group" data-reveal>
+            <div class="absolute right-0 md:-right-20 -top-12 md:-top-20 outlined-num select-none pointer-events-none opacity-20 transition-all duration-700 group-hover:opacity-40 group-hover:-translate-x-10 text-right">02</div>
+            <div class="w-full lg:w-2/5 lg:pr-4">
+              <span class="font-label text-xs text-tertiary mb-3 block tracking-widest uppercase font-bold">Stage 02</span>
+              <h2 class="font-headline text-4xl md:text-6xl font-bold tracking-tighter uppercase mb-6 leading-tight">Neural<br />Symphony</h2>
+              <p class="font-body text-lg text-on-surface-variant leading-relaxed mb-6 italic opacity-80">"Where raw data cascades into visual poetry."</p>
+              <p class="font-body text-base text-outline leading-relaxed mb-8">Our proprietary AI workflows generate high-fidelity sequences that transcend physical constraints. We treat the algorithm as a master cinematographer, conducting light in the void.</p>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-1.5 border border-outline-variant text-[10px] font-label uppercase tracking-widest text-primary bg-surface/50 backdrop-blur">Diffusion Synthesis</span>
+                <span class="px-4 py-1.5 border border-outline-variant text-[10px] font-label uppercase tracking-widest text-primary bg-surface/50 backdrop-blur">Temporal Coherence</span>
+              </div>
+            </div>
+            <div class="w-full lg:w-3/5">
+              <div class="relative aspect-video stage-image-container overflow-hidden">
+                <div class="absolute -top-4 -right-4" style="border-top:2px solid rgba(198,198,198,.4); border-right:2px solid rgba(198,198,198,.4); width:24px; height:24px; z-index:20;"></div>
+                <div class="absolute -bottom-4 -left-4" style="border-bottom:2px solid rgba(198,198,198,.4); border-left:2px solid rgba(198,198,198,.4); width:24px; height:24px; z-index:20;"></div>
+                <img alt="" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPMVmwVssCjHDBwpFPSNL-lEXrgTQSk8UQMlG6l3qr9guXp3Dksi8__5coppOGm2oHQ-wy3B0w9CDkXrox5l6nV001o903QBs8sJtSV0EEBWkGBok03e7wPtIOKHZkoDytO0-zVJA08UFmOD_6JfmO2GOp7mPPFMEJSX6QloLGvSITbg9wC3H472ygd2yZl7ZgewXiKgZgPNJ4EAntLzLOlYqPteAqQlxQLiS7EUtRH27bESn50oa2B5Yoc4p4B2dAlwx-5KeyLYq1" />
+                <div class="absolute inset-0 bg-surface/30 mix-blend-overlay group-hover:bg-transparent transition-colors duration-700"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 3 -->
+          <div class="flex flex-col lg:flex-row gap-16 items-center relative z-10 group" data-reveal>
+            <div class="absolute -left-10 md:-left-20 -top-12 md:-top-20 outlined-num select-none pointer-events-none opacity-20 transition-all duration-700 group-hover:opacity-40 group-hover:translate-x-10">03</div>
+            <div class="w-full lg:w-3/5 order-2 lg:order-1">
+              <div class="relative aspect-video stage-image-container overflow-hidden">
+                <div class="absolute -top-4 -left-4" style="border-top:2px solid rgba(198,198,198,.4); border-left:2px solid rgba(198,198,198,.4); width:24px; height:24px; z-index:20;"></div>
+                <div class="absolute -bottom-4 -right-4" style="border-bottom:2px solid rgba(198,198,198,.4); border-right:2px solid rgba(198,198,198,.4); width:24px; height:24px; z-index:20;"></div>
+                <img alt="" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlW-1xniZjdrwY4gGzbUYGlhM2Tc0FDpLTJ6fX5LPpEwPBPOMVjIcqMLH-m_s77aKgwfj9UH84iU1HyJVYEnf7qcfTC57B0D6smFk795Mz7f1qMBjdwNjRZPLUKzXDFt_wVRCX1XW0V7Mo8-hsOay4jJFTGRy2XBc40TmyB_QJMHAaFyLNGCirRX-Dp7SOAYki8wMv2G47zSF85fKFwC8i1Knz5YmbOaAo0Dk4ehKj-ocOcswYB6pAgJyF0giWCGKat8jAreqiQbxQ" />
+                <div class="absolute inset-0 bg-surface/30 mix-blend-overlay group-hover:bg-transparent transition-colors duration-700"></div>
+              </div>
+            </div>
+            <div class="w-full lg:w-2/5 order-1 lg:order-2 lg:pl-4">
+              <span class="font-label text-xs text-tertiary mb-3 block tracking-widest uppercase font-bold">Stage 03</span>
+              <h2 class="font-headline text-4xl md:text-6xl font-bold tracking-tighter uppercase mb-6 leading-tight">Mastering<br />Reality</h2>
+              <p class="font-body text-lg text-on-surface-variant leading-relaxed mb-6 italic opacity-80">"Human oversight is the anchor in the infinite."</p>
+              <p class="font-body text-base text-outline leading-relaxed mb-8">The final auteur touch. We apply human-led color grading, custom soundscapes, and procedural compositing to ensure the AI assets feel tactile and undeniable.</p>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-1.5 border border-outline-variant text-[10px] font-label uppercase tracking-widest text-primary bg-surface/50 backdrop-blur">Chrominance Grading</span>
+                <span class="px-4 py-1.5 border border-outline-variant text-[10px] font-label uppercase tracking-widest text-primary bg-surface/50 backdrop-blur">Sonic Architecture</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-48 md:py-64 px-6 md:px-12 flex flex-col items-center justify-center relative overflow-hidden bg-surface">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(144,147,255,0.08),transparent_50%)] pointer-events-none"></div>
+      <div class="relative flex flex-col items-center" data-reveal>
+        <h3 class="font-headline text-5xl md:text-[10vw] font-bold tracking-tighter uppercase mb-20 text-center leading-[0.8]">
+          Begin the<br />
+          <span class="text-tertiary transition-all duration-700 hover:text-white">Transcendence</span>
+        </h3>
+        <a href="services.html#contact" class="group relative inline-flex items-center justify-center px-12 py-6 md:px-32 md:py-12 border-2 border-primary/20 hover:border-tertiary transition-all duration-500 overflow-hidden">
+          <span class="absolute inset-0 bg-tertiary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+          <span class="relative font-headline font-bold text-xl md:text-4xl tracking-tighter uppercase text-primary group-hover:text-black flex items-center gap-6 transition-colors duration-500">
+            Inquire About A Project
+            <span class="material-symbols-outlined text-2xl md:text-5xl group-hover:translate-x-4 transition-transform duration-500">arrow_right_alt</span>
+          </span>
+        </a>
+        <p class="mt-16 font-label text-[10px] uppercase tracking-[0.4em] text-outline opacity-40">Limited Availability for Q3 2026</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full py-16 px-6 md:px-12 bg-[#0e0e0e] border-t border-outline-variant/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="flex flex-col items-center md:items-start gap-4">
+        <div class="text-lg font-bold text-[#c6c6c6] font-headline uppercase tracking-tighter">HINTON STUDIOS</div>
+        <p class="font-label text-[11px] uppercase tracking-[0.2em] text-[#767575]">© 2024 HINTON STUDIOS. THE DIGITAL AUTEUR.</p>
+      </div>
+      <div class="flex gap-8 font-label text-[11px] uppercase tracking-[0.2em]">
+        <a class="text-[#767575] hover:text-[#9093ff] transition-colors" href="#">Privacy</a>
+        <a class="text-[#767575] hover:text-[#9093ff] transition-colors" href="#">Terms</a>
+        <a class="text-[#767575] hover:text-[#9093ff] transition-colors" href="#">Instagram</a>
+        <a class="text-[#767575] hover:text-[#9093ff] transition-colors" href="#">Vimeo</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 bg-tertiary rounded-full animate-pulse-soft"></span>
+        <span class="font-label text-[9px] text-[#767575] tracking-[0.3em]">SERVERS OPTIMAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/app.js"></script>
+  <script type="module" src="assets/enhance.js"></script>
+  <script src="assets/gsap-animations.js"></script>
+  <script src="assets/vfx.js"></script>
+</body>
+</html>
