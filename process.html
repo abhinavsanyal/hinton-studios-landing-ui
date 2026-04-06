@@ -18,19 +18,48 @@
 
   <div id="scroll-progress"></div>
 
-  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-6 bg-[#030303]/40 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-    <a href="index.html" class="text-2xl font-bold tracking-tighter text-[#c6c6c6] font-headline uppercase">HINTON STUDIOS</a>
-    <div class="hidden md:flex items-center gap-10 font-headline tracking-tight uppercase text-[12px] font-medium">
-      <a data-nav="work.html" href="work.html" class="hover:text-[#9093ff] transition-all duration-300">Work</a>
-      <a data-nav="process.html" href="process.html" class="hover:text-[#9093ff] transition-all duration-300">Process</a>
-      <a data-nav="services.html" href="services.html" class="hover:text-[#9093ff] transition-all duration-300">Services</a>
-      <a data-nav="index.html" href="index.html" class="hover:text-[#9093ff] transition-all duration-300">About</a>
-      <a data-nav="services.html#contact" href="services.html#contact" class="hover:text-[#9093ff] transition-all duration-300">Contact</a>
+    <!-- ================= NAV ================= -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-5 bg-[#030303]/80 md:bg-[#030303]/40 backdrop-blur-xl border-b border-white/5 transition-all duration-300"
+    >
+      <a
+        href="index.html"
+        class="text-2xl font-bold tracking-tighter text-[#c6c6c6] font-headline uppercase relative z-[60]"
+        >HINTON STUDIOS</a
+      >
+      <!-- Desktop Links -->
+      <div
+        class="hidden md:flex items-center gap-10 font-headline tracking-tight uppercase text-[12px] font-medium"
+      >
+        <a data-nav="work.html" href="work.html" class="hover:text-[#9093ff] transition-all duration-300">Work</a>
+        <a data-nav="process.html" href="process.html" class="text-white font-bold transition-all duration-300">Process</a>
+        <a data-nav="services.html" href="services.html" class="hover:text-[#9093ff] transition-all duration-300">Services</a>
+        <a data-nav="index.html" href="index.html" class="hover:text-[#9093ff] transition-all duration-300">About</a>
+        <a data-nav="services.html#contact" href="services.html#contact" class="hover:text-[#9093ff] transition-all duration-300">Contact</a>
+      </div>
+      
+      <div class="flex items-center gap-4 relative z-[60]">
+        <a
+          href="services.html#contact"
+          class="hidden md:block bg-primary text-on-primary font-headline font-bold px-6 py-2 text-[10px] tracking-widest uppercase hover:bg-white transition-all duration-300 active:scale-95"
+        >
+          START PROJECT
+        </a>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white flex items-center justify-center p-2">
+          <span class="material-symbols-outlined text-3xl transition-transform duration-300" id="mobile-menu-icon" style="font-variation-settings: 'wght' 200;">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#030303]/95 backdrop-blur-3xl z-[55] flex flex-col justify-center items-center gap-10 font-headline tracking-widest uppercase text-2xl opacity-0 pointer-events-none transition-all duration-500">
+        <a href="work.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all">Work</a>
+        <a href="process.html" class="text-white hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-75">Process</a>
+        <a href="services.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-150">Services</a>
+        <a href="index.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-200">About</a>
+        <a href="services.html#contact" class="text-primary hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-300 text-sm mt-4 border border-primary/30 px-6 py-3">START PROJECT</a>
     </div>
-    <a href="services.html#contact" class="bg-primary text-on-primary font-headline font-bold px-6 py-2 text-[10px] tracking-widest uppercase hover:bg-white transition-all duration-300 active:scale-95">
-      START PROJECT
-    </a>
-  </nav>
 
   <main class="pt-32">
     <!-- Hero Title -->
@@ -186,5 +215,41 @@
   <script type="module" src="assets/enhance.js"></script>
   <script src="assets/gsap-animations.js"></script>
   <script src="assets/vfx.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('mobile-menu-icon');
+      const links = document.querySelectorAll('.mobile-nav-link');
+      
+      btn.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('pointer-events-none');
+        
+        if (isOpen) {
+          // Close
+          menu.classList.add('opacity-0', 'pointer-events-none');
+          icon.textContent = 'menu';
+          icon.style.transform = 'rotate(0deg)';
+          document.body.style.overflow = '';
+          
+          links.forEach(link => {
+            link.classList.remove('translate-y-0', 'opacity-100');
+            link.classList.add('translate-y-4', 'opacity-0');
+          });
+        } else {
+          // Open
+          menu.classList.remove('opacity-0', 'pointer-events-none');
+          icon.textContent = 'close';
+          icon.style.transform = 'rotate(90deg)';
+          document.body.style.overflow = 'hidden';
+          
+          links.forEach(link => {
+            link.classList.remove('translate-y-4', 'opacity-0');
+            link.classList.add('translate-y-0', 'opacity-100');
+          });
+        }
+      });
+    </script>
 </body>
 </html>

@@ -328,5 +328,41 @@
     <script type="module" src="assets/enhance.js"></script>
     <script src="assets/gsap-animations.js"></script>
     <script src="assets/vfx.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('mobile-menu-icon');
+      const links = document.querySelectorAll('.mobile-nav-link');
+      
+      btn.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('pointer-events-none');
+        
+        if (isOpen) {
+          // Close
+          menu.classList.add('opacity-0', 'pointer-events-none');
+          icon.textContent = 'menu';
+          icon.style.transform = 'rotate(0deg)';
+          document.body.style.overflow = '';
+          
+          links.forEach(link => {
+            link.classList.remove('translate-y-0', 'opacity-100');
+            link.classList.add('translate-y-4', 'opacity-0');
+          });
+        } else {
+          // Open
+          menu.classList.remove('opacity-0', 'pointer-events-none');
+          icon.textContent = 'close';
+          icon.style.transform = 'rotate(90deg)';
+          document.body.style.overflow = 'hidden';
+          
+          links.forEach(link => {
+            link.classList.remove('translate-y-4', 'opacity-0');
+            link.classList.add('translate-y-0', 'opacity-100');
+          });
+        }
+      });
+    </script>
   </body>
 </html>
