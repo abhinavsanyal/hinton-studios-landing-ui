@@ -24,6 +24,18 @@ window.onYouTubeIframeAPIReady = function() {
                     // Activate iframe (mount video into RAM)
                     if (!iframe.src || iframe.src === '') {
                         iframe.src = iframe.dataset.src;
+                        
+                        // Boot up a fresh JS engine hook to explicitly force the Play command upon Safari
+                        setTimeout(() => {
+                            if (window.YT && window.YT.Player) {
+                                new YT.Player(iframe.id, {
+                                    events: {
+                                        'onReady': onPlayerReady,
+                                        'onStateChange': onPlayerStateChange
+                                    }
+                                });
+                            }
+                        }, 500); // Allow iOS DOM to paint the iframe node first
                     }
                 } else {
                     // Cull iframe memory when off-screen (dull to save VRAM)
