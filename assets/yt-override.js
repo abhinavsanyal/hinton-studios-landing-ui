@@ -1,13 +1,28 @@
 /**
  * YouTube IFrame API Override Script & Intelligent Memory Culling
  * Desktop: Initializes players normally with API to bypass strict block.
- * Mobile (< 768px): Uses IntersectionObserver to cull off-screen iframes and stop iOS WebKit crashes.
+ * Mobile (< 768px): Uses IntersectionObserver + First-Touch postMessage to stop iOS WebKit crashes and bypass Autoplay block.
  */
 
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+window.isUserInteracted = false;
+
+// Global Touch Unlocker for iOS
+window.addEventListener('touchstart', function unlockVideo() {
+    window.isUserInteracted = true;
+    document.querySelectorAll('iframe[src*="youtube"]').forEach(iframe => {
+        if(iframe.src && iframe.contentWindow) {
+           iframe.contentWindow.postMessage(JSON.stringify({ "event": "command", "func": "mute", "args": [] }), "*");
+           iframe.contentWindow.postMessage(JSON.stringify({ "event": "command", "func": "playVideo", "args": [] }), "*");
+        }
+    });
+    window.removeEventListener('touchstart', unlockVideo);
+}, {once: true});
+
 
 window.onYouTubeIframeAPIReady = function() {
     const isMobile = window.innerWidth < 768;
@@ -21,31 +36,31 @@ window.onYouTubeIframeAPIReady = function() {
                 const iframe = entry.target;
                 
                 if (entry.isIntersecting) {
-                    // Activate iframe (mount video into RAM)
+                    // Mount video into RAM
                     if (!iframe.src || iframe.src === '') {
                         iframe.src = iframe.dataset.src;
                         
-                        // Boot up a fresh JS engine hook to explicitly force the Play command upon Safari
-                        setTimeout(() => {
-                            if (window.YT && window.YT.Player) {
-                                new YT.Player(iframe.id, {
-                                    events: {
-                                        'onReady': onPlayerReady,
-                                        'onStateChange': onPlayerStateChange
+                        iframe.onload = () => {
+                            if (window.isUserInteracted) {
+                                setTimeout(() => {
+                                    if(iframe.contentWindow) {
+                                        iframe.contentWindow.postMessage(JSON.stringify({ "event": "command", "func": "mute", "args": [] }), "*");
+                                        iframe.contentWindow.postMessage(JSON.stringify({ "event": "command", "func": "playVideo", "args": [] }), "*");
                                     }
-                                });
+                                }, 300);
                             }
-                        }, 500); // Allow iOS DOM to paint the iframe node first
+                        };
                     }
                 } else {
-                    // Cull iframe memory when off-screen (dull to save VRAM)
+                    // Cull iframe memory when off-screen to save VRAM from crashing
                     if (iframe.src && iframe.src !== '') {
                         if (!iframe.dataset.src) iframe.dataset.src = iframe.src;
+                        iframe.onload = null; // Clean up listeners
                         iframe.src = '';
                     }
                 }
             });
-        }, { rootMargin: '200px 0px' });
+        }, { rootMargin: '300px 0px' });
     }
 
     iframes.forEach((iframe, index) => {
@@ -86,7 +101,7 @@ window.onYouTubeIframeAPIReady = function() {
             observer.observe(iframe);
 
         } else {
-            // DESKTOP: Bypass WebKit strict blocks explicitly through JS API
+            // DESKTOP: Bypass WebKit strict blocks explicitly through heavy JS API
             iframe.src = currentSrc;
             new YT.Player(iframe.id, {
                 events: {

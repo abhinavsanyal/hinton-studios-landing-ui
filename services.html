@@ -626,7 +626,7 @@
 
         contactForm.addEventListener('submit', function(e) {
           e.preventDefault();
-          const btn = this.querySelector('button');
+          const btn = this.querySelector('button[type="submit"]');
           const btnText = btn.querySelector('.btn-text');
           const originalText = btnText.textContent;
           
