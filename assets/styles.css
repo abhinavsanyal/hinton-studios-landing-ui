@@ -303,15 +303,31 @@ input:focus, textarea:focus { outline: none; }
     width: 100vw !important;
     animation: none !important;
   }
+  /* Force the hero <main> to fill the real viewport (svh accounts for mobile URL bar) */
+  main.min-h-screen {
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    /* On mobile, top-align the content instead of centering — avoids the big gap */
+    justify-content: flex-start !important;
+  }
+  /* Ensure the background container fills the hero */
+  main.min-h-screen > .absolute.inset-0 {
+    position: absolute !important;
+    top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100% !important;
+  }
   /* Hero title indent */
   .ml-12, .ml-24 { margin-left: 0.75rem !important; }
 
-  /* Hero content area */
-  .pt-32 { padding-top: 5rem !important; }
-  .pb-20 { padding-bottom: 2.5rem !important; }
+  /* Hero content area — text starts right below the navbar */
+  .pt-32 { padding-top: 6.5rem !important; }   /* just enough to clear the fixed nav */
+  .pb-20 { padding-bottom: 1.5rem !important; }
 
   /* Hero subtitle spacing */
-  .mb-16 { margin-bottom: 2rem !important; }
+  .mb-16 { margin-bottom: 1.25rem !important; }
+  .mb-4 { margin-bottom: 0.25rem !important; }
 
   /* === VERTICAL RHYTHM (8px baseline grid) === */
   .py-32 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
