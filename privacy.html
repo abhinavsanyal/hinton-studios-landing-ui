@@ -24,7 +24,23 @@
         <a href="services.html" class="hover:text-[#9093ff] transition-all duration-300">Services</a>
         <a href="index.html" class="hover:text-[#9093ff] transition-all duration-300">Home</a>
       </div>
+      
+      <div class="flex items-center gap-4 relative z-[60]">
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white flex items-center justify-center p-2">
+          <span class="material-symbols-outlined text-3xl transition-transform duration-300" id="mobile-menu-icon" style="font-variation-settings: 'wght' 200;">menu</span>
+        </button>
+      </div>
     </nav>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#030303]/95 backdrop-blur-3xl z-[55] flex flex-col justify-center items-center gap-10 font-headline tracking-widest uppercase text-2xl opacity-0 pointer-events-none transition-all duration-500">
+        <a href="work.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all">Work</a>
+        <a href="process.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-75">Process</a>
+        <a href="services.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-150">Services</a>
+        <a href="index.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-200">About</a>
+        <a href="services.html#contact" class="text-primary hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-300 text-sm mt-4 border border-primary/30 px-6 py-3">START PROJECT</a>
+    </div>
 
     <main class="pt-32 pb-24 px-6 md:px-12">
       <div class="max-w-3xl mx-auto">
@@ -187,5 +203,58 @@
       </div>
     </footer>
 
+    <!-- Mobile Menu Script -->
+    <script>
+      (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const links = document.querySelectorAll('.mobile-nav-link');
+        
+        if (!btn || !menu) return;
+
+        function closeMenu() {
+          menu.classList.add('opacity-0', 'pointer-events-none');
+          icon.textContent = 'menu';
+          icon.style.transform = 'rotate(0deg)';
+          document.body.style.overflow = '';
+          
+          links.forEach(link => {
+            link.classList.remove('translate-y-0', 'opacity-100');
+            link.classList.add('translate-y-4', 'opacity-0');
+          });
+        }
+
+        function openMenu() {
+          menu.classList.remove('opacity-0', 'pointer-events-none');
+          icon.textContent = 'close';
+          icon.style.transform = 'rotate(90deg)';
+          document.body.style.overflow = 'hidden';
+          
+          links.forEach(link => {
+            link.classList.remove('translate-y-4', 'opacity-0');
+            link.classList.add('translate-y-0', 'opacity-100');
+          });
+        }
+
+        btn.addEventListener('click', () => {
+          const isOpen = !menu.classList.contains('pointer-events-none');
+          if (isOpen) closeMenu();
+          else openMenu();
+        });
+
+        // Close menu when a link is clicked to avoid bfcache issues
+        links.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Handle browser back/forward buttons (bfcache)
+        window.addEventListener('pageshow', (event) => {
+          if (event.persisted && !menu.classList.contains('pointer-events-none')) {
+            closeMenu();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

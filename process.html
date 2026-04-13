@@ -237,16 +237,15 @@
 
     <!-- Mobile Menu Script -->
     <script>
-      const btn = document.getElementById('mobile-menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      const icon = document.getElementById('mobile-menu-icon');
-      const links = document.querySelectorAll('.mobile-nav-link');
-      
-      btn.addEventListener('click', () => {
-        const isOpen = !menu.classList.contains('pointer-events-none');
+      (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const links = document.querySelectorAll('.mobile-nav-link');
         
-        if (isOpen) {
-          // Close
+        if (!btn || !menu) return;
+
+        function closeMenu() {
           menu.classList.add('opacity-0', 'pointer-events-none');
           icon.textContent = 'menu';
           icon.style.transform = 'rotate(0deg)';
@@ -256,8 +255,9 @@
             link.classList.remove('translate-y-0', 'opacity-100');
             link.classList.add('translate-y-4', 'opacity-0');
           });
-        } else {
-          // Open
+        }
+
+        function openMenu() {
           menu.classList.remove('opacity-0', 'pointer-events-none');
           icon.textContent = 'close';
           icon.style.transform = 'rotate(90deg)';
@@ -268,7 +268,25 @@
             link.classList.add('translate-y-0', 'opacity-100');
           });
         }
-      });
+
+        btn.addEventListener('click', () => {
+          const isOpen = !menu.classList.contains('pointer-events-none');
+          if (isOpen) closeMenu();
+          else openMenu();
+        });
+
+        // Close menu when a link is clicked to avoid bfcache issues
+        links.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Handle browser back/forward buttons (bfcache)
+        window.addEventListener('pageshow', (event) => {
+          if (event.persisted && !menu.classList.contains('pointer-events-none')) {
+            closeMenu();
+          }
+        });
+      })();
     </script>
     <script src="assets/yt-override.js"></script>
 </body>
