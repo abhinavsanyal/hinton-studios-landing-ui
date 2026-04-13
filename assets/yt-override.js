@@ -21,46 +21,63 @@
                 var heroVideoIds = ['sDfixts3h4o', 'cbFiwFXRqn0', 'EEgggVtn1B0', 'icHxNil5dvg'];
                 var currentIdx = 0;
 
-                // Get the parent wrapper that contains the panning track
-                var heroWrapper = heroTrack.parentElement; // the skew wrapper
-                
-                // Nuke the entire 8-panel track
+                var heroWrapper = heroTrack.parentElement;
                 heroTrack.remove();
                 
-                // Reset the wrapper to be a simple full-bleed container
-                heroWrapper.style.cssText = 'position:absolute;inset:0;overflow:hidden;opacity:0.9;';
+                heroWrapper.style.cssText = 'position:absolute;inset:0;overflow:hidden;';
                 heroWrapper.className = '';
 
-                // Create the single iframe
+                // === LIQUID GLASS LOADING BACKDROP ===
+                // Beautiful animated gradient that shows while video buffers
+                var glassLoader = document.createElement('div');
+                glassLoader.id = 'hero-glass-loader';
+                glassLoader.style.cssText = 'position:absolute;inset:0;z-index:0;';
+                glassLoader.innerHTML = '' +
+                    '<div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0a1a 0%,#101028 25%,#0d0d22 50%,#14142e 75%,#0a0a1a 100%);background-size:400% 400%;animation:liquidShift 8s ease infinite;"></div>' +
+                    '<div style="position:absolute;inset:0;backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);"></div>' +
+                    '<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(144,147,255,0.08) 0%,transparent 60%);animation:glassOrb 6s ease-in-out infinite alternate;"></div>' +
+                    '<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 60%,rgba(100,100,200,0.06) 0%,transparent 50%);animation:glassOrb 8s ease-in-out infinite alternate-reverse;"></div>' +
+                    '<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(3,3,3,0.3) 100%);"></div>';
+                heroWrapper.appendChild(glassLoader);
+
+                // Inject the keyframes for liquid glass animation
+                var styleTag = document.createElement('style');
+                styleTag.textContent = '' +
+                    '@keyframes liquidShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}' +
+                    '@keyframes glassOrb{0%{opacity:0.3;transform:scale(1)}100%{opacity:0.7;transform:scale(1.3)}}';
+                document.head.appendChild(styleTag);
+
+                // === THE VIDEO IFRAME ===
                 var heroIframe = document.createElement('iframe');
                 heroIframe.id = 'mobile-hero-video';
-                heroIframe.style.cssText = 'position:absolute;top:50%;left:50%;width:200%;height:200%;max-width:none;transform:translate(-50%,-50%);pointer-events:none;border:0;';
+                heroIframe.style.cssText = 'position:absolute;top:50%;left:50%;width:300vw;height:300vh;max-width:none;transform:translate(-50%,-50%);pointer-events:none;border:0;z-index:1;opacity:0;transition:opacity 2s ease;';
                 heroIframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
                 heroIframe.setAttribute('frameborder', '0');
                 heroIframe.src = 'https://www.youtube-nocookie.com/embed/' + heroVideoIds[0] + '?autoplay=1&mute=1&playsinline=1&loop=1&playlist=' + heroVideoIds[0] + '&controls=0&showinfo=0&rel=0&enablejsapi=1';
                 
+                // Fade in the video once it loads (glass loader stays underneath as fallback)
+                heroIframe.onload = function() {
+                    setTimeout(function() { heroIframe.style.opacity = '0.85'; }, 800);
+                };
                 heroWrapper.appendChild(heroIframe);
 
-                // Create vignette blur overlay on top
+                // === VIGNETTE OVERLAY ===
                 var vignetteOverlay = document.createElement('div');
-                vignetteOverlay.style.cssText = 'position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center, transparent 30%, rgba(3,3,3,0.6) 70%, rgba(3,3,3,0.9) 100%);';
+                vignetteOverlay.style.cssText = 'position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center, transparent 20%, rgba(3,3,3,0.5) 60%, rgba(3,3,3,0.85) 100%);';
                 heroWrapper.appendChild(vignetteOverlay);
 
-                // Cycle through videos every 20 seconds
+                // === CYCLE VIDEOS ===
                 setInterval(function() {
                     currentIdx = (currentIdx + 1) % heroVideoIds.length;
                     var vid = heroVideoIds[currentIdx];
                     
-                    // Fade out
-                    heroIframe.style.transition = 'opacity 1.5s ease';
                     heroIframe.style.opacity = '0';
                     
                     setTimeout(function() {
                         heroIframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1&mute=1&playsinline=1&loop=1&playlist=' + vid + '&controls=0&showinfo=0&rel=0&enablejsapi=1';
-                        // Fade back in after a moment for the iframe to load
-                        setTimeout(function() {
-                            heroIframe.style.opacity = '1';
-                        }, 800);
+                        heroIframe.onload = function() {
+                            setTimeout(function() { heroIframe.style.opacity = '0.85'; }, 600);
+                        };
                     }, 1500);
                 }, 20000);
             }
