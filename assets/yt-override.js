@@ -1,113 +1,109 @@
 /**
- * YouTube IFrame API Override Script & Intelligent Memory Culling
- * Desktop: Initializes players normally with API to bypass strict block.
- * Mobile (< 768px): Replaces heavy iframes with native YouTube app links to prevent crashing.
+ * yt-override.js — Mobile Thumbnail + YouTube Button / Desktop Autoplay
+ * 
+ * This script runs AFTER the <head> inline mobile-intercept script has already
+ * stripped iframe src on mobile. It handles two entirely separate paths:
+ * 
+ * MOBILE  (< 768px): Injects HD thumbnails + "Watch on YouTube" red play button
+ * DESKTOP (>= 768px): Loads YouTube IFrame API and forces autoplay via JS
  */
 
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+(function() {
+    const isMobile = window.innerWidth < 768;
 
-window.isUserInteracted = false;
-
-// Global Touch Unlocker for Desktop (Ensures audio/video context unblocks if we need to force play on Desktop too)
-window.addEventListener('touchstart', function unlockVideo() {
-    window.isUserInteracted = true;
-    document.querySelectorAll('iframe[src*="youtube"]').forEach(iframe => {
-        if(iframe.src && iframe.contentWindow) {
-           iframe.contentWindow.postMessage(JSON.stringify({ "event": "command", "func": "mute", "args": [] }), "*");
-           iframe.contentWindow.postMessage(JSON.stringify({ "event": "command", "func": "playVideo", "args": [] }), "*");
-        }
-    });
-    window.removeEventListener('touchstart', unlockVideo);
-}, {once: true});
-
-
-window.onYouTubeIframeAPIReady = function() {
-    const isMobile = window.innerWidth < 768; // standard viewport breakpoint separating tablets/mobile
-    const iframes = document.querySelectorAll('iframe[src*="youtube"]');
-    
-    iframes.forEach((iframe, index) => {
-        let currentSrc = iframe.getAttribute('src') || iframe.getAttribute('data-src');
-        if (!currentSrc) return;
-
-        if (isMobile) {
-            // MOBILE DOM MANIPULATION -> High-Res Thumbnails & Native Links
+    if (isMobile) {
+        // ======== MOBILE PATH ========
+        // The <head> inline script already moved src -> data-src.
+        // Now we replace iframes with thumbnails + YouTube buttons.
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframes = document.querySelectorAll('iframe[data-src*="youtube"]');
             
-            // Extract Video ID using Regex
-            const videoIdMatch = currentSrc.match(/embed\/([^?]+)/);
-            if (videoIdMatch && videoIdMatch[1]) {
+            iframes.forEach(function(iframe) {
+                const src = iframe.getAttribute('data-src') || '';
+                const videoIdMatch = src.match(/embed\/([^?&#]+)/);
+                if (!videoIdMatch) return;
+                
                 const videoId = videoIdMatch[1];
                 const wrapper = iframe.parentElement;
-
-                // 1. Inject Cinematic Background Thumbnail
-                wrapper.style.backgroundImage = `url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg')`;
+                
+                // Set cinematic thumbnail as background
+                wrapper.style.backgroundImage = "url('https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg')";
                 wrapper.style.backgroundSize = 'cover';
                 wrapper.style.backgroundPosition = 'center';
                 
-                // 2. Remove CSS Pointer blocking on the wrapper container if it exists
+                // Remove pointer-events-none so the link is tappable
                 wrapper.classList.remove('pointer-events-none');
-
-                // 3. Destroy <iframe> node instantly to prevent ANY iOS WebKit memory payload parsing
+                
+                // Kill the iframe completely — no memory cost at all
                 iframe.remove();
                 
-                // 4. Create proper Youtube Anchor Wrapper over the entire panel space
-                const ytAnchor = document.createElement('a');
-                ytAnchor.href = `https://www.youtube.com/watch?v=${videoId}`;
-                ytAnchor.target = "_blank";
-                ytAnchor.className = "absolute inset-0 z-50 flex items-center justify-center bg-black/30 hover:bg-black/10 transition-colors group cursor-pointer";
+                // Build the "Watch on YouTube" button
+                var link = document.createElement('a');
+                link.href = 'https://www.youtube.com/watch?v=' + videoId;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.style.cssText = 'position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);cursor:pointer;text-decoration:none;';
                 
-                // 5. Build sleek animated SVG Youtube Icon
-                ytAnchor.innerHTML = `
-                    <svg xmlns="http://www.w.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 md:w-20 md:h-20 text-[#ff0000] drop-shadow-[0_0_15px_rgba(255,0,0,0.4)] transition-transform duration-500 group-hover:scale-110">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                `;
-
-                // Link added to DOM
-                wrapper.appendChild(ytAnchor);
-            }
-
-        } else {
-            // DESKTOP / TABLET (`innerWidth >= 768px`) -> Native Embeds & Autoplay overrides
-            
-            // Apply programmatic parameters
-            if (!currentSrc.includes('enablejsapi=1')) {
-                currentSrc += currentSrc.includes('?') ? '&enablejsapi=1' : '?enablejsapi=1';
-            }
-            if (!currentSrc.includes('origin=')) {
-                currentSrc += '&origin=' + window.location.origin;
-            }
-            if (!currentSrc.includes('playsinline=1')) {
-                currentSrc += '&playsinline=1';
-            }
-            
-            // Ensure iframe has ID for API hook
-            if (!iframe.id) iframe.id = 'yt-player-override-' + index;
-
-            // Bypass strict blocks explicitly through heavy JS API
-            iframe.src = currentSrc;
-            new YT.Player(iframe.id, {
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
+                // Official YouTube play button SVG (red pill shape + white triangle)
+                link.innerHTML = '<svg viewBox="0 0 68 48" width="68" height="48" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));">' +
+                    '<path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#FF0000"/>' +
+                    '<path d="M45 24L27 14v20" fill="white"/>' +
+                    '</svg>';
+                
+                // Make sure wrapper has position:relative for the absolute link
+                if (getComputedStyle(wrapper).position === 'static') {
+                    wrapper.style.position = 'relative';
                 }
+                
+                wrapper.appendChild(link);
             });
-        }
-    });
+        });
 
-};
+    } else {
+        // ======== DESKTOP / TABLET PATH ========
+        // Load the YouTube IFrame Player API and force autoplay
+        
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// Global playback hooks for Desktop elements
-function onPlayerReady(event) {
-    event.target.mute();          
-    event.target.playVideo();     
-}
+        window.onYouTubeIframeAPIReady = function() {
+            var iframes = document.querySelectorAll('iframe[src*="youtube"]');
+            
+            iframes.forEach(function(iframe, index) {
+                var currentSrc = iframe.getAttribute('src') || '';
+                if (!currentSrc) return;
 
-function onPlayerStateChange(event) {
-    // Loop
-    if (event.data === YT.PlayerState.ENDED) {
-        event.target.playVideo(); 
+                // Inject API parameters
+                if (currentSrc.indexOf('enablejsapi=1') === -1) {
+                    currentSrc += (currentSrc.indexOf('?') !== -1 ? '&' : '?') + 'enablejsapi=1';
+                }
+                if (currentSrc.indexOf('origin=') === -1) {
+                    currentSrc += '&origin=' + window.location.origin;
+                }
+                if (currentSrc.indexOf('playsinline=1') === -1) {
+                    currentSrc += '&playsinline=1';
+                }
+                
+                if (!iframe.id) iframe.id = 'yt-player-' + index;
+                iframe.src = currentSrc;
+
+                new YT.Player(iframe.id, {
+                    events: {
+                        'onReady': function(event) {
+                            event.target.mute();
+                            event.target.playVideo();
+                        },
+                        'onStateChange': function(event) {
+                            if (event.data === YT.PlayerState.ENDED) {
+                                event.target.playVideo();
+                            }
+                        }
+                    }
+                });
+            });
+        };
     }
-}
+})();

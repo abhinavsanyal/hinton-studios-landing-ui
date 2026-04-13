@@ -11,6 +11,25 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script src="assets/tailwind-config.js"></script>
   <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      if (window.innerWidth < 768) {
+        new MutationObserver(function(mutations) {
+          mutations.forEach(function(m) {
+            m.addedNodes.forEach(function(node) {
+              if (node.nodeType === 1) {
+                var iframes = node.tagName === 'IFRAME' ? [node] : Array.prototype.slice.call(node.querySelectorAll ? node.querySelectorAll('iframe[src*="youtube"]') : []);
+                iframes.forEach(function(f) {
+                  if (f.src && f.src.indexOf('youtube') !== -1) {
+                    f.setAttribute('data-src', f.src);
+                    f.removeAttribute('src');
+                  }
+                });
+              }
+            });
+          });
+        }).observe(document.documentElement, {childList: true, subtree: true});
+      }
+    </script>
 </head>
 <body class="selection:bg-tertiary selection:text-black">
   <div class="fixed top-0 z-[-2] h-screen w-screen bg-[#030303] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(100,99,160,0.15),rgba(255,255,255,0))]"></div>
