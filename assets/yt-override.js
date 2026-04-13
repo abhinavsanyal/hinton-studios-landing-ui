@@ -1,15 +1,15 @@
 /**
  * yt-override.js — Mobile Video Hero + Thumbnails / Desktop Autoplay
  * 
- * MOBILE  (< 768px):
+ * MOBILE  (< 1024px):
  *   - Hero (.animate-slow-pan): Replaces 8 panels with ONE cycling YouTube iframe + vignette blur
  *   - Other pages: Replaces iframes with HD thumbnails + YouTube link buttons
- * DESKTOP (>= 768px):
+ * DESKTOP (>= 1024px):
  *   - Full YouTube IFrame API autoplay, no changes
  */
 
 (function() {
-    var isMobile = window.innerWidth < 768;
+    var isMobile = window.innerWidth < 1024;
 
     if (isMobile) {
         // ======== MOBILE PATH ========

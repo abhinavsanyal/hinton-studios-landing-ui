@@ -262,11 +262,11 @@ input:focus, textarea:focus { outline: none; }
 }
 
 /* =========================================================
-   MOBILE RESPONSIVE OVERRIDES (phones only, < 768px)
+   MOBILE RESPONSIVE OVERRIDES (all phones + small tablets, < 1024px)
    Desktop & tablet are completely untouched.
    Designed with a proper 4px baseline grid and modular type scale.
    ========================================================= */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
 
   /* === GLOBAL RESETS === */
   html, body {
