@@ -33,13 +33,22 @@ import Layout from '../layouts/Layout.astro';
       <!-- PORTRAIT / IMAGE AREA -->
       <div class="md:col-span-5" data-reveal>
         <div class="relative aspect-[3/4] cinematic-grade-teal overflow-hidden border border-outline-variant/20 bg-surface-container shadow-2xl">
-          <!-- Placeholder for photo -->
-          <div class="absolute inset-0 bg-gradient-to-tr from-surface to-surface-container-high/20 opacity-80 z-10 pointer-events-none"></div>
-          <div class="w-full h-full flex items-center justify-center text-outline-variant uppercase font-label tracking-widest text-[10px]">
-            [ FOUNDER_PORTRAIT.JPG ]
-          </div>
+          <!-- Founder Portrait -->
+          <img 
+            src="/assets/dp-best.png" 
+            alt="Abhinav Sanyal — Founder & Director, Hinton Studios" 
+            class="w-full h-full object-cover object-top"
+            width="720"
+            height="960"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent opacity-70 z-10 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-tr from-surface/30 to-transparent opacity-50 z-10 pointer-events-none"></div>
           <div class="absolute bottom-6 left-6 z-20 viewfinder-corner">
-            <span class="font-label text-[8px] tracking-[0.4em] text-primary uppercase">INTEL_GATHERING</span>
+            <span class="font-label text-[8px] tracking-[0.4em] text-primary uppercase">ABHINAV_SANYAL</span>
+          </div>
+          <div class="absolute top-4 right-4 z-20">
+            <span class="font-label text-[7px] tracking-[0.3em] text-outline-variant/40 uppercase">FOUNDER & DIRECTOR</span>
           </div>
         </div>
       </div>

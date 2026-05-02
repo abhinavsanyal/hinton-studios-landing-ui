@@ -1,5 +1,6 @@
 ---
 import Layout from './Layout.astro';
+import CostCalculator from '../components/CostCalculator.astro';
 
 interface Props {
   title: string;
@@ -15,11 +16,12 @@ interface Props {
   deliverables: string[];
   videoId?: string;
   relatedServices: Array<{title: string; slug: string; icon: string}>;
+  calculatorType?: 'ai-film' | 'short-film' | 'tv-commercial' | 'ugc' | 'creative-strategy';
 }
 
 const { 
   title, slug, tagline, description, metaDescription, keywords, icon, heroLabel,
-  features, process, deliverables, videoId, relatedServices
+  features, process, deliverables, videoId, relatedServices, calculatorType
 } = Astro.props;
 
 const serviceJsonLd = {
@@ -142,6 +144,9 @@ const serviceJsonLd = {
         ))}
       </div>
     </section>
+
+    <!-- Cost Savings Calculator -->
+    {calculatorType && <CostCalculator serviceType={calculatorType} serviceTitle={title} />}
 
     <!-- Custom content slot -->
     <slot />

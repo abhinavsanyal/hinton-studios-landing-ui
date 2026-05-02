@@ -1,0 +1,325 @@
+---
+/**
+ * Cost Savings Calculator — Compares traditional production costs vs Hinton Studios AI-native costs.
+ * Rendered as an interactive client-side component with slider inputs.
+ * Props define the service-specific cost multipliers and labels.
+ */
+interface Props {
+  serviceType: 'ai-film' | 'short-film' | 'tv-commercial' | 'ugc' | 'creative-strategy';
+  serviceTitle: string;
+}
+
+const { serviceType, serviceTitle } = Astro.props;
+
+/**
+ * Cost data per service (based on 2024-2026 industry research)
+ * Traditional = standard agency/production house rates
+ * AI-native = Hinton Studios AI-powered production rates
+ * Savings are percentage based with specific multipliers
+ */
+const costData: Record<string, {
+  inputs: Array<{id: string; label: string; min: number; max: number; defaultVal: number; step: number; unit: string; suffix?: string}>;
+  traditionalFormula: string;
+  aiFormula: string;
+  traditionalLabel: string;
+  aiLabel: string;
+  savingsTip: string;
+}> = {
+  'ai-film': {
+    inputs: [
+      { id: 'duration', label: 'Film Duration', min: 1, max: 30, defaultVal: 5, step: 1, unit: 'min' },
+      { id: 'complexity', label: 'Visual Complexity', min: 1, max: 5, defaultVal: 3, step: 1, unit: '/5' },
+      { id: 'revisions', label: 'Revision Rounds', min: 1, max: 10, defaultVal: 3, step: 1, unit: 'rounds' }
+    ],
+    traditionalFormula: 'duration * complexity * 8000 + revisions * 2500',
+    aiFormula: 'duration * complexity * 2400 + revisions * 500',
+    traditionalLabel: 'Traditional Studio Production',
+    aiLabel: 'Hinton Studios AI-Native',
+    savingsTip: 'AI eliminates physical sets, crews, and equipment — delivering Hollywood-grade visuals at a fraction of the cost.'
+  },
+  'short-film': {
+    inputs: [
+      { id: 'duration', label: 'Film Duration', min: 1, max: 20, defaultVal: 5, step: 1, unit: 'min' },
+      { id: 'complexity', label: 'Production Scale', min: 1, max: 5, defaultVal: 3, step: 1, unit: '/5' },
+      { id: 'revisions', label: 'Revision Rounds', min: 1, max: 8, defaultVal: 2, step: 1, unit: 'rounds' }
+    ],
+    traditionalFormula: 'duration * complexity * 6000 + revisions * 2000',
+    aiFormula: 'duration * complexity * 1800 + revisions * 400',
+    traditionalLabel: 'Traditional Short Film Production',
+    aiLabel: 'Hinton Studios AI-Native',
+    savingsTip: 'AI-driven narrative production slashes location scouting, talent fees, and post-production timelines.'
+  },
+  'tv-commercial': {
+    inputs: [
+      { id: 'duration', label: 'Ad Length', min: 15, max: 120, defaultVal: 30, step: 15, unit: 'sec' },
+      { id: 'complexity', label: 'Production Quality', min: 1, max: 5, defaultVal: 3, step: 1, unit: '/5' },
+      { id: 'variants', label: 'Ad Variants', min: 1, max: 10, defaultVal: 3, step: 1, unit: 'versions' }
+    ],
+    traditionalFormula: '(duration / 30) * complexity * 15000 + variants * 5000',
+    aiFormula: '(duration / 30) * complexity * 4500 + variants * 800',
+    traditionalLabel: 'Traditional Ad Agency',
+    aiLabel: 'Hinton Studios AI-Native',
+    savingsTip: 'AI enables rapid multi-variant testing — produce 10x more ad variations for the cost of one traditional shoot.'
+  },
+  'ugc': {
+    inputs: [
+      { id: 'videos', label: 'Number of Videos', min: 1, max: 50, defaultVal: 10, step: 1, unit: 'videos' },
+      { id: 'duration', label: 'Avg Duration', min: 15, max: 120, defaultVal: 30, step: 15, unit: 'sec' },
+      { id: 'platforms', label: 'Platform Variants', min: 1, max: 5, defaultVal: 3, step: 1, unit: 'platforms' }
+    ],
+    traditionalFormula: 'videos * 350 * (duration / 30) + platforms * videos * 100',
+    aiFormula: 'videos * 90 * (duration / 30) + platforms * videos * 20',
+    traditionalLabel: 'Traditional UGC Agency',
+    aiLabel: 'Hinton Studios AI-Native',
+    savingsTip: 'AI-powered casting and generation means unlimited creator diversity without individual creator fees.'
+  },
+  'creative-strategy': {
+    inputs: [
+      { id: 'months', label: 'Campaign Duration', min: 1, max: 12, defaultVal: 3, step: 1, unit: 'months' },
+      { id: 'channels', label: 'Marketing Channels', min: 1, max: 8, defaultVal: 4, step: 1, unit: 'channels' },
+      { id: 'deliverables', label: 'Strategy Deliverables', min: 1, max: 20, defaultVal: 5, step: 1, unit: 'docs' }
+    ],
+    traditionalFormula: 'months * 8500 + channels * 2000 + deliverables * 1500',
+    aiFormula: 'months * 3200 + channels * 600 + deliverables * 350',
+    traditionalLabel: 'Traditional Strategy Agency',
+    aiLabel: 'Hinton Studios AI-Augmented',
+    savingsTip: 'AI research and analytics accelerate strategy development — months of insight compressed into days.'
+  }
+};
+
+const data = costData[serviceType];
+---
+
+<section class="px-6 md:px-12 py-32 relative overflow-hidden" id="cost-calculator">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(144,147,255,0.04),transparent_60%)] pointer-events-none"></div>
+  <div class="max-w-[1600px] mx-auto relative z-10">
+    <div class="mb-16" data-reveal>
+      <span class="font-label text-[11px] tracking-[0.3em] uppercase text-tertiary mb-4 block font-bold">COST_ANALYSIS</span>
+      <h2 class="font-headline text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-tight">Savings<br/>Calculator</h2>
+      <p class="mt-4 font-body text-on-surface-variant max-w-2xl text-sm leading-relaxed">
+        See exactly how much you save with AI-native production. Adjust the parameters below to match your project scope.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12" data-reveal style="--reveal-delay: 100ms">
+      <!-- Input Panel -->
+      <div class="lg:col-span-5 border border-outline-variant/20 bg-black/40 backdrop-blur p-8 md:p-10">
+        <span class="font-label text-[10px] tracking-[0.3em] uppercase text-outline-variant mb-8 block">PROJECT PARAMETERS</span>
+        <div class="space-y-8" id="calc-inputs">
+          {data.inputs.map((input) => (
+            <div class="calc-input-group">
+              <div class="flex justify-between items-baseline mb-3">
+                <label class="font-headline text-sm font-bold text-white uppercase tracking-tight" for={`calc-${input.id}`}>
+                  {input.label}
+                </label>
+                <span class="font-mono text-lg text-tertiary font-bold" id={`calc-${input.id}-value`}>
+                  {input.defaultVal}<span class="text-xs text-outline-variant ml-1">{input.unit}</span>
+                </span>
+              </div>
+              <input
+                type="range"
+                id={`calc-${input.id}`}
+                min={input.min}
+                max={input.max}
+                value={input.defaultVal}
+                step={input.step}
+                class="calc-slider w-full"
+                data-unit={input.unit}
+              />
+              <div class="flex justify-between mt-1">
+                <span class="font-label text-[8px] text-outline-variant/50">{input.min} {input.unit}</span>
+                <span class="font-label text-[8px] text-outline-variant/50">{input.max} {input.unit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Results Panel -->
+      <div class="lg:col-span-7 space-y-6">
+        <!-- Traditional Cost -->
+        <div class="border border-outline-variant/20 bg-black/40 backdrop-blur p-8 md:p-10 relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-500/60 via-red-400/40 to-transparent"></div>
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span class="font-label text-[9px] tracking-[0.3em] uppercase text-red-400/60 mb-2 block">{data.traditionalLabel}</span>
+              <div class="flex items-baseline gap-2">
+                <span class="font-headline text-4xl md:text-5xl font-bold text-red-400/80 tracking-tighter" id="calc-traditional-cost">$0</span>
+                <span class="font-label text-[9px] text-outline-variant uppercase tracking-wider">EST. TOTAL</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-red-400/50 text-lg">trending_up</span>
+              <span class="font-label text-[9px] text-red-400/50 uppercase tracking-wider">Higher overhead</span>
+            </div>
+          </div>
+          <!-- Traditional breakdown bar -->
+          <div class="mt-6 h-3 bg-surface-container-high rounded-sm overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-red-500/50 to-red-400/30 transition-all duration-700 ease-out" id="calc-traditional-bar" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <!-- AI Cost -->
+        <div class="border border-tertiary/20 bg-black/40 backdrop-blur p-8 md:p-10 relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-tertiary/60 via-tertiary/40 to-transparent"></div>
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span class="font-label text-[9px] tracking-[0.3em] uppercase text-tertiary/60 mb-2 block">{data.aiLabel}</span>
+              <div class="flex items-baseline gap-2">
+                <span class="font-headline text-4xl md:text-5xl font-bold text-tertiary tracking-tighter" id="calc-ai-cost">$0</span>
+                <span class="font-label text-[9px] text-outline-variant uppercase tracking-wider">EST. TOTAL</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-tertiary/50 text-lg">trending_down</span>
+              <span class="font-label text-[9px] text-tertiary/50 uppercase tracking-wider">AI-optimized</span>
+            </div>
+          </div>
+          <!-- AI breakdown bar -->
+          <div class="mt-6 h-3 bg-surface-container-high rounded-sm overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-tertiary/60 to-tertiary/30 transition-all duration-700 ease-out" id="calc-ai-bar" style="width: 30%"></div>
+          </div>
+        </div>
+
+        <!-- Savings Summary -->
+        <div class="border border-emerald-500/20 bg-emerald-950/10 backdrop-blur p-8 md:p-10 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-emerald-400/60 via-emerald-400/30 to-transparent"></div>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <span class="font-label text-[9px] tracking-[0.3em] uppercase text-emerald-400/60 mb-2 block">YOUR ESTIMATED SAVINGS</span>
+              <div class="flex items-baseline gap-3">
+                <span class="font-headline text-5xl md:text-7xl font-bold text-emerald-400 tracking-tighter" id="calc-savings">$0</span>
+                <div class="flex flex-col">
+                  <span class="font-headline text-2xl font-bold text-emerald-400/80" id="calc-savings-pct">0%</span>
+                  <span class="font-label text-[8px] text-emerald-400/40 uppercase tracking-wider">COST REDUCTION</span>
+                </div>
+              </div>
+            </div>
+            <a href="/start-project" class="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 px-6 py-4 hover:bg-emerald-500/20 hover:border-emerald-400/40 transition-all duration-500 group/cta flex-shrink-0">
+              <span class="font-headline text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">Claim savings</span>
+              <span class="material-symbols-outlined text-emerald-400 text-sm group-hover/cta:translate-x-1 transition-transform">arrow_right_alt</span>
+            </a>
+          </div>
+          <p class="mt-6 font-body text-xs text-emerald-400/40 leading-relaxed italic">
+            {data.savingsTip}
+          </p>
+        </div>
+
+        <p class="font-label text-[8px] text-outline-variant/30 uppercase tracking-widest text-center">
+          * Estimates based on 2024–2026 industry benchmarks. Actual costs may vary based on project scope.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .calc-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: linear-gradient(to right, rgba(144, 147, 255, 0.3), rgba(144, 147, 255, 0.1));
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #9093ff;
+    border: 2px solid #030303;
+    box-shadow: 0 0 12px rgba(144, 147, 255, 0.4);
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .calc-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 20px rgba(144, 147, 255, 0.6);
+    transform: scale(1.15);
+  }
+  .calc-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #9093ff;
+    border: 2px solid #030303;
+    box-shadow: 0 0 12px rgba(144, 147, 255, 0.4);
+    cursor: pointer;
+  }
+</style>
+
+<script is:inline define:vars={{ traditionalFormula: data.traditionalFormula, aiFormula: data.aiFormula, inputIds: data.inputs.map(i => i.id) }}>
+(function() {
+  function calculate() {
+    // Read all slider values
+    const vals = {};
+    inputIds.forEach(function(id) {
+      const el = document.getElementById('calc-' + id);
+      if (el) {
+        vals[id] = parseFloat(el.value);
+        // Update displayed value
+        const valEl = document.getElementById('calc-' + id + '-value');
+        if (valEl) {
+          var unit = el.getAttribute('data-unit') || '';
+          valEl.innerHTML = el.value + '<span class="text-xs text-outline-variant ml-1">' + unit + '</span>';
+        }
+      }
+    });
+
+    // Evaluate formulas
+    var duration = vals.duration || 0;
+    var complexity = vals.complexity || 0;
+    var revisions = vals.revisions || 0;
+    var variants = vals.variants || 0;
+    var videos = vals.videos || 0;
+    var platforms = vals.platforms || 0;
+    var months = vals.months || 0;
+    var channels = vals.channels || 0;
+    var deliverables = vals.deliverables || 0;
+
+    var traditional = eval(traditionalFormula);
+    var ai = eval(aiFormula);
+    var savings = traditional - ai;
+    var pct = traditional > 0 ? Math.round((savings / traditional) * 100) : 0;
+
+    // Format currency
+    function fmt(n) {
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+
+    // Update display with animation
+    var tradEl = document.getElementById('calc-traditional-cost');
+    var aiEl = document.getElementById('calc-ai-cost');
+    var savEl = document.getElementById('calc-savings');
+    var pctEl = document.getElementById('calc-savings-pct');
+    var tradBar = document.getElementById('calc-traditional-bar');
+    var aiBar = document.getElementById('calc-ai-bar');
+
+    if (tradEl) tradEl.textContent = fmt(traditional);
+    if (aiEl) aiEl.textContent = fmt(ai);
+    if (savEl) savEl.textContent = fmt(savings);
+    if (pctEl) pctEl.textContent = pct + '%';
+
+    // Update bars
+    if (tradBar) tradBar.style.width = '100%';
+    if (aiBar && traditional > 0) aiBar.style.width = Math.round((ai / traditional) * 100) + '%';
+  }
+
+  // Attach listeners
+  inputIds.forEach(function(id) {
+    var el = document.getElementById('calc-' + id);
+    if (el) {
+      el.addEventListener('input', calculate);
+    }
+  });
+
+  // Initial calculation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', calculate);
+  } else {
+    calculate();
+  }
+})();
+</script>
