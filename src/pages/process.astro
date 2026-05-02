@@ -1,92 +1,20 @@
-<!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hinton Studios — Our Process</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script src="assets/tailwind-config.js"></script>
-  <link rel="stylesheet" href="assets/styles.css" />
-    <script>
-      if (window.innerWidth < 1024) {
-        new MutationObserver(function(mutations) {
-          mutations.forEach(function(m) {
-            m.addedNodes.forEach(function(node) {
-              if (node.nodeType === 1) {
-                var iframes = node.tagName === 'IFRAME' ? [node] : Array.prototype.slice.call(node.querySelectorAll ? node.querySelectorAll('iframe[src*="youtube"]') : []);
-                iframes.forEach(function(f) {
-                  if (f.src && f.src.indexOf('youtube') !== -1) {
-                    f.setAttribute('data-src', f.src);
-                    f.removeAttribute('src');
-                  }
-                });
-              }
-            });
-          });
-        }).observe(document.documentElement, {childList: true, subtree: true});
-      }
-    </script>
-</head>
-<body class="selection:bg-tertiary selection:text-black">
-  <div class="fixed top-0 z-[-2] h-screen w-screen bg-[#030303] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(100,99,160,0.15),rgba(255,255,255,0))]"></div>
-  <div class="fixed inset-0 z-[-1] pointer-events-none opacity-[0.10] mix-blend-screen bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-  <div id="scroll-progress"></div>
-
-    <!-- ================= NAV ================= -->
-    <nav
-      class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-5 bg-[#030303]/80 md:bg-[#030303]/40 backdrop-blur-xl border-b border-white/5 transition-all duration-300"
-    >
-      <a
-        href="index.html"
-        class="text-2xl font-bold tracking-tighter text-[#c6c6c6] font-headline uppercase relative z-[60]"
-        >HINTON STUDIOS</a
-      >
-      <!-- Desktop Links -->
-      <div
-        class="hidden md:flex items-center gap-10 font-headline tracking-tight uppercase text-[12px] font-medium"
-      >
-        <a data-nav="work.html" href="work.html" class="hover:text-[#9093ff] transition-all duration-300">Work</a>
-        <a data-nav="process.html" href="process.html" class="text-white font-bold transition-all duration-300">Process</a>
-        <a data-nav="services.html" href="services.html" class="hover:text-[#9093ff] transition-all duration-300">Services</a>
-        <a data-nav="index.html" href="index.html" class="hover:text-[#9093ff] transition-all duration-300">About</a>
-        <a data-nav="services.html#contact" href="services.html#contact" class="hover:text-[#9093ff] transition-all duration-300">Contact</a>
-      </div>
-      
-      <div class="flex items-center gap-4 relative z-[60]">
-        <a
-          href="services.html#contact"
-          class="hidden md:block bg-primary text-on-primary font-headline font-bold px-6 py-2 text-[10px] tracking-widest uppercase hover:bg-white transition-all duration-300 active:scale-95"
-        >
-          START PROJECT
-        </a>
-        <!-- Mobile Menu Toggle Button -->
-        <button id="mobile-menu-btn" class="md:hidden text-white flex items-center justify-center p-2">
-          <span class="material-symbols-outlined text-3xl transition-transform duration-300" id="mobile-menu-icon" style="font-variation-settings: 'wght' 200;">menu</span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Mobile Fullscreen Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-[#030303]/95 backdrop-blur-3xl z-[55] flex flex-col justify-center items-center gap-10 font-headline tracking-widest uppercase text-2xl opacity-0 pointer-events-none transition-all duration-500">
-        <a href="work.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all">Work</a>
-        <a href="process.html" class="text-white hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-75">Process</a>
-        <a href="services.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-150">Services</a>
-        <a href="index.html" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-200">About</a>
-        <a href="services.html#contact" class="text-primary hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-300 text-sm mt-4 border border-primary/30 px-6 py-3">START PROJECT</a>
-    </div>
-
+<Layout 
+  title="Our AI Filmmaking Process — How We Create AI Advertisements & Films | Hinton Studios" 
+  description="Discover how Hinton Studios combines human storytelling with 100% generative AI production. Our 3-stage AI filmmaking process delivers cinematic ads, films & content at unprecedented speed."
+  keywords="ai filmmaking process, how ai films are made, ai video production process, ai advertisement process, generative ai production pipeline, ai film production workflow, ai content creation process"
+  hasHeroParticles={false}
+>
   <main class="pt-32">
     <!-- Hero Title -->
     <section class="px-6 md:px-12 mb-24 max-w-7xl mx-auto" data-reveal>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
         <div>
           <span class="font-label text-[11px] uppercase tracking-[0.3em] text-tertiary mb-6 block font-bold">The Methodology</span>
-          <h1 class="font-headline text-5xl md:text-9xl font-bold tracking-tighter uppercase leading-[0.85] text-on-surface">The Digital<br /><span class="video-text-fill" style="background-image: url('https://img.youtube.com/vi/cbFiwFXRqn0/maxresdefault.jpg'), linear-gradient(135deg, #b0b0b0, #e0e0e0, #c0c0c0)">Auteur</span></h1>
+          <h1 class="font-headline text-5xl md:text-9xl font-bold tracking-tighter uppercase leading-[0.85] text-on-surface">The Digital<br /><span class="video-text-fill" style="background-image: url('https://img.youtube.com/vi/cbFiwFXRqn0/maxresdefault.jpg')">Auteur</span></h1>
         </div>
         <div class="pb-4">
           <p class="font-body text-xl text-outline max-w-md leading-relaxed border-l-2 border-tertiary/30 pl-8">
@@ -196,98 +124,15 @@
           Begin the<br />
           <span class="text-tertiary transition-all duration-700 hover:text-white">Transcendence</span>
         </h3>
-        <a href="services.html#contact" class="group relative inline-flex items-center justify-center px-12 py-6 md:px-32 md:py-12 border-2 border-primary/20 hover:border-tertiary transition-all duration-500 overflow-hidden">
+        <a href="/services#contact" class="group relative inline-flex items-center justify-center px-12 py-6 md:px-32 md:py-12 border-2 border-primary/20 hover:border-tertiary transition-all duration-500 overflow-hidden">
           <span class="absolute inset-0 bg-tertiary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
           <span class="relative font-headline font-bold text-xl md:text-4xl tracking-tighter uppercase text-primary group-hover:text-black flex items-center gap-6 transition-colors duration-500">
             Inquire About A Project
             <span class="material-symbols-outlined text-2xl md:text-5xl group-hover:translate-x-4 transition-transform duration-500">arrow_right_alt</span>
           </span>
         </a>
-        <p class="mt-16 font-label text-[10px] uppercase tracking-[0.4em] text-outline opacity-40">Limited Availability for Q3 2026</p>
+        <p class="mt-16 font-label text-[10px] uppercase tracking-[0.4em] text-outline opacity-40">Selective Engagement — Now Booking Q2 / Q3 2026</p>
       </div>
     </section>
   </main>
-
-  <!-- FOOTER -->
-  <footer class="w-full py-16 px-6 md:px-12 bg-[#0e0e0e] border-t border-outline-variant/10">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-      <div class="flex flex-col items-center md:items-start gap-4">
-        <div class="text-lg font-bold text-[#c6c6c6] font-headline uppercase tracking-tighter">HINTON STUDIOS</div>
-        <p class="font-label text-[11px] uppercase tracking-[0.2em] text-[#767575]">© 2026 HINTON STUDIOS. THE DIGITAL AUTEUR.</p>
-      </div>
-      <div class="flex flex-wrap justify-center gap-6 md:gap-8 font-label text-[11px] uppercase tracking-[0.2em]">
-        <a class="text-[#767575] hover:text-[#9093ff] transition-colors" href="privacy.html">Privacy</a>
-        <a class="text-[#767575] hover:text-[#9093ff] transition-colors" href="terms.html">Terms</a>
-        <a class="text-[#767575] hover:text-[#9093ff] transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a class="text-[#767575] hover:text-[#9093ff] transition-colors" href="https://vimeo.com/" target="_blank" rel="noopener noreferrer">Vimeo</a>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 bg-tertiary rounded-full animate-pulse-soft"></span>
-        <span class="font-label text-[9px] text-[#767575] tracking-[0.3em]">SERVERS OPTIMAL</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="assets/app.js"></script>
-  <script type="module" src="assets/enhance.js"></script>
-  <script src="assets/gsap-animations.js"></script>
-  <script src="assets/vfx.js"></script>
-
-    <!-- Mobile Menu Script -->
-    <script>
-      (function() {
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const icon = document.getElementById('mobile-menu-icon');
-        const links = document.querySelectorAll('.mobile-nav-link');
-        
-        if (!btn || !menu) return;
-
-        function closeMenu() {
-          menu.classList.add('opacity-0', 'pointer-events-none');
-          icon.textContent = 'menu';
-          icon.style.transform = 'rotate(0deg)';
-          document.body.style.overflow = '';
-          
-          links.forEach(link => {
-            link.classList.remove('translate-y-0', 'opacity-100');
-            link.classList.add('translate-y-4', 'opacity-0');
-          });
-        }
-
-        function openMenu() {
-          menu.classList.remove('opacity-0', 'pointer-events-none');
-          icon.textContent = 'close';
-          icon.style.transform = 'rotate(90deg)';
-          document.body.style.overflow = 'hidden';
-          
-          links.forEach(link => {
-            link.classList.remove('translate-y-4', 'opacity-0');
-            link.classList.add('translate-y-0', 'opacity-100');
-          });
-        }
-
-        btn.addEventListener('click', () => {
-          const isOpen = !menu.classList.contains('pointer-events-none');
-          if (isOpen) closeMenu();
-          else openMenu();
-        });
-
-        // Close menu when a link is clicked to avoid bfcache issues
-        links.forEach(link => {
-          link.addEventListener('click', closeMenu);
-        });
-
-        // Handle browser back/forward buttons (bfcache)
-        window.addEventListener('pageshow', (event) => {
-          if (event.persisted && !menu.classList.contains('pointer-events-none')) {
-            closeMenu();
-          }
-        });
-      })();
-    </script>
-    <script src="assets/yt-override.js"></script>
-</body>
-</html>
+</Layout>

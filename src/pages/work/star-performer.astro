@@ -1,0 +1,26 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+
+const metadata = {
+  genre: "Horror Short",
+  runtime: "1:22",
+  year: "2024",
+  tools: ["Sora (Simulated/Reference)", "Midjourney v6", "Runway Gen-2", "ElevenLabs", "DaVinci Resolve"],
+  role: "Concept to Final Render"
+};
+
+const brief = "Corporate anxiety meets sheer terror. A psychological descent into the modern workplace. We wanted to explore the horrific lengths people go to for corporate validation, turning the mundane setting of an office cubicle into a surreal nightmare dimension.";
+
+const approach = "We built the initial visual language around liminal spaces—endless fluorescent-lit hallways and beige cubicles. Using a combination of image-to-video tools, we progressively warped the office geometry as the protagonist's mental state deteriorated. The soundscape was crafted using ElevenLabs to generate unnervingly cheerful HR announcements that glitch into demonic frequencies. It serves as a proof-of-concept for how AI can tackle nuanced, psychological horror.";
+---
+
+<CaseStudyLayout 
+  title="Star Performer" 
+  videoId="icHxNil5dvg"
+  metadata={metadata}
+  brief={brief}
+  approach={approach}
+  prevSlug="alone"
+  prevTitle="Alone"
+>
+</CaseStudyLayout>

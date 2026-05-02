@@ -1,0 +1,76 @@
+---
+import ServicePageLayout from '../../layouts/ServicePageLayout.astro';
+
+const features = [
+  {
+    title: "AI-Generated UGC",
+    description: "Social-first content that looks and feels like authentic user-generated content — without the unpredictability of real creators. AI-cast performers, AI-shot scenes, total brand control.",
+    icon: "group"
+  },
+  {
+    title: "Platform-Native Formats",
+    description: "Content engineered specifically for TikTok, Instagram Reels, YouTube Shorts, and Facebook. We understand each platform's algorithm, aesthetic, and engagement patterns.",
+    icon: "phone_android"
+  },
+  {
+    title: "Infinite Variation Engine",
+    description: "Generate dozens of content variations from a single creative brief. Test different hooks, visual styles, CTAs, and narratives at scale — without the cost of multiple shoots.",
+    icon: "auto_mode"
+  },
+  {
+    title: "AI Casting & Personas",
+    description: "Generate photorealistic AI creators and brand ambassadors that match your target demographic. No talent negotiations, no exclusivity clauses, no usage rights complications.",
+    icon: "diversity_3"
+  },
+  {
+    title: "Trend-Reactive Production",
+    description: "Jump on viral trends, cultural moments, and seasonal events within hours. Our AI production pipeline enables real-time content creation that traditional UGC can't match.",
+    icon: "trending_up"
+  },
+  {
+    title: "Performance Analytics Integration",
+    description: "Content designed with conversion metrics in mind. We structure every piece for measurable performance — hook rate, watch time, click-through, and conversion optimization.",
+    icon: "monitoring"
+  }
+];
+
+const process = [
+  { step: "01", title: "Brief & Audience Analysis", description: "Deep analysis of your brand voice, target audience, platform strategy, and content objectives. We identify the UGC formats and styles that drive maximum engagement." },
+  { step: "02", title: "Content Architecture", description: "Human strategists design the content matrix — hooks, narratives, CTAs, and visual styles. We create content templates optimized for each platform's algorithm." },
+  { step: "03", title: "AI Content Production", description: "Our AI artists generate UGC-style content with AI-cast performers, authentic environments, and platform-native aesthetics. Every piece feels organic, not manufactured." },
+  { step: "04", title: "Optimize & Deliver", description: "Final editing, caption strategy, hashtag optimization, and platform-specific formatting. Content delivered ready-to-post with performance tracking recommendations." }
+];
+
+const deliverables = [
+  "Content strategy & platform matrix",
+  "AI-generated UGC videos (batch production)",
+  "Multiple hook variations per concept",
+  "Platform-optimized formats (9:16, 1:1, 16:9)",
+  "Caption & hashtag strategy",
+  "A/B test variants for paid amplification",
+  "Monthly content calendar template",
+  "Performance tracking framework"
+];
+
+const relatedServices = [
+  { title: "AI Film Production", slug: "ai-film-production", icon: "auto_awesome" },
+  { title: "Short Films", slug: "short-films", icon: "theaters" },
+  { title: "TV Commercials", slug: "tv-commercials", icon: "live_tv" },
+  { title: "Creative Strategy", slug: "creative-strategy", icon: "architecture" }
+];
+---
+
+<ServicePageLayout
+  title="AI UGC & Social Content"
+  slug="ugc-content"
+  tagline="Social-first content powered by AI casting and generative production, bridging the gap between brand and community."
+  description="In the age of social commerce, user-generated content drives more conversions than polished brand advertising. But traditional UGC is unpredictable, unscalable, and uncontrollable. Hinton Studios solves this with AI-generated UGC — content that looks and feels authentically user-created, but with the precision, brand safety, and scalability of professional production. Our AI content creation service generates social-first videos featuring AI-cast performers in authentic settings, speaking naturally to camera, demonstrating products, and telling brand stories in formats native to TikTok, Instagram Reels, YouTube Shorts, and beyond. Every piece of AI UGC content is designed with platform algorithms in mind: optimized hook rates, watch-time architecture, and conversion-driven CTAs. We produce at scale — dozens of variations from a single brief — enabling brands to A/B test creative concepts, react to trends in real-time, and maintain a consistent social presence without the logistics of managing creator networks."
+  metaDescription="AI UGC & social content creation. We produce AI-generated user content, AI social media videos & influencer-style content for TikTok, Instagram & YouTube. Scale your content with AI."
+  keywords="ai ugc, ai content creation, ai social media content, ai user generated content, ai ugc production, ai tiktok content, ai instagram reels, ai social content, ai content creator, generative ai content, ai video content creation, ai branded content"
+  icon="smartphone"
+  heroLabel="Service // AI UGC & Social Content"
+  features={features}
+  process={process}
+  deliverables={deliverables}
+  relatedServices={relatedServices}
+/>

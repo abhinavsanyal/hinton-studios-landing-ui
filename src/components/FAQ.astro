@@ -1,0 +1,110 @@
+---
+interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    id: "001",
+    question: "How is this different from a traditional ad agency?",
+    answer: "Traditional agencies rely on massive physical crews, location scouting, set builds, and weeks of post-production. We replace the physical constraints with generative AI, allowing us to ideate, shoot, and deliver a cinematic commercial in days instead of months. The creative storytelling remains intensely human; the execution is algorithmically accelerated."
+  },
+  {
+    id: "002",
+    question: "Who owns the final assets and IP?",
+    answer: "You do. Upon final payment, Hinton Studios transfers full ownership and commercial rights of the final delivered video file to the brand. We retain the right to showcase the work in our portfolio and case studies."
+  },
+  {
+    id: "003",
+    question: "Which AI tools do you use?",
+    answer: "Our stack is entirely proprietary and constantly evolving. Currently, we utilize a combination of Midjourney v6 for look-dev, Runway Gen-2 and Kling 1.0 for motion, ElevenLabs and Suno for audio, and Magnific for upscaling. We then composite and master the final output in DaVinci Resolve and Final Cut Pro."
+  },
+  {
+    id: "004",
+    question: "How do you handle brand guidelines and product accuracy?",
+    answer: "AI generation can be unpredictable. To ensure brand safety and product accuracy, we use advanced ControlNet techniques and custom image-to-video architectures to lock in your exact product packaging and brand colors. We don't just prompt; we engineer the generation to match your brand."
+  },
+  {
+    id: "005",
+    question: "What's your typical turnaround?",
+    answer: "A standard commercial project (30-60s) takes roughly 10-14 days from concept approval to final render. Spec sprints and UGC deliverables can be turned around in as little as 5 days."
+  },
+  {
+    id: "006",
+    question: "Do you offer revisions? How many?",
+    answer: "Yes. Our standard engagement includes two rounds of revisions: one during the storyboard/animatic phase (pre-production), and one after the first cut (post-production). Because we use AI, revising a shot is often faster than traditional reshoots, but structural changes late in the game may incur additional costs."
+  },
+  {
+    id: "007",
+    question: "Can you match a specific director's style or reference?",
+    answer: "Absolutely. Our process starts with extensive style referencing. We can tune the aesthetic to match the moody tension of Fincher, the symmetry of Anderson, or the hyper-kinetic energy of modern Gen-Z ads."
+  },
+  {
+    id: "008",
+    question: "Do you handle music, voiceover, sound design?",
+    answer: "Yes, we handle all audio post-production. We use AI audio generation for distinct voice-overs and bespoke soundtracks, combined with traditional foley and sound design to ground the AI visuals in reality."
+  },
+  {
+    id: "009",
+    question: "What rights / licenses come with deliverables?",
+    answer: "All delivered assets are cleared for global commercial use across all digital platforms (Web, Social, OTT) in perpetuity. If broadcast television rights are required, please specify during the discovery phase."
+  },
+  {
+    id: "010",
+    question: "Do you sign NDAs?",
+    answer: "Yes. We regularly work under strict NDAs for pre-release products and upcoming feature film pre-visualizations."
+  }
+];
+
+// Generate JSON-LD for SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<div class="faq-container w-full max-w-4xl mx-auto" data-reveal>
+  <span class="font-label text-[10px] tracking-[0.4em] uppercase text-tertiary mb-8 block font-bold">FAQ_INDEX // QUERIES</span>
+  
+  <div class="accordion border-t border-outline-variant/20">
+    {faqs.map((faq) => (
+      <details class="group border-b border-outline-variant/20 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex justify-between items-center font-headline font-bold text-lg md:text-2xl tracking-tighter uppercase cursor-pointer list-none py-6 md:py-8 pr-4 hover:text-primary transition-colors text-white">
+          <div class="flex items-center gap-6 md:gap-12">
+             <span class="font-label text-[10px] tracking-widest text-outline uppercase group-hover:text-tertiary transition-colors">FAQ // {faq.id}</span>
+             <span>{faq.question}</span>
+          </div>
+          <span class="transition group-open:rotate-180 material-symbols-outlined text-outline">expand_more</span>
+        </summary>
+        <div class="text-on-surface-variant font-body text-sm md:text-base leading-relaxed pb-8 pl-[110px] max-md:pl-0 max-w-3xl animate-fade-in-down">
+          {faq.answer}
+        </div>
+      </details>
+    ))}
+  </div>
+</div>
+
+<!-- Inline CSS simply for the fade-in animation inside details if it wasn't picked up by tailwind -->
+<style>
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-down {
+    animation: fadeInDown 0.3s ease-out forwards;
+  }
+</style>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -1,0 +1,76 @@
+---
+import ServicePageLayout from '../../layouts/ServicePageLayout.astro';
+
+const features = [
+  {
+    title: "Brand Positioning & Narrative Architecture",
+    description: "Define your brand's story in the age of AI. We architect narrative frameworks that position your brand at the intersection of innovation and human connection.",
+    icon: "hub"
+  },
+  {
+    title: "Campaign Strategy & Planning",
+    description: "Multi-platform campaign architecture designed for AI-first execution. From brand awareness to conversion, we build strategies that leverage AI production at every touchpoint.",
+    icon: "campaign"
+  },
+  {
+    title: "Content Strategy & Calendar",
+    description: "Strategic content frameworks that maintain brand consistency across AI-produced films, commercials, UGC, and social content. Frequency, format, and platform all optimized.",
+    icon: "calendar_month"
+  },
+  {
+    title: "AI Workflow Consulting",
+    description: "Expert guidance on integrating AI production into your creative workflow. We help in-house teams and agencies adopt AI filmmaking tools, processes, and best practices.",
+    icon: "build"
+  },
+  {
+    title: "Audience & Market Intelligence",
+    description: "Data-driven audience analysis and competitive landscape mapping. We identify the cultural conversations, visual languages, and content formats that resonate with your target market.",
+    icon: "insights"
+  },
+  {
+    title: "Creative Direction & Art Direction",
+    description: "End-to-end creative direction for AI-produced content. From visual identity systems to shot-by-shot direction guides, we ensure every piece of AI content serves your brand vision.",
+    icon: "brush"
+  }
+];
+
+const process = [
+  { step: "01", title: "Discovery & Audit", description: "Deep dive into your brand, market, competitors, and audience. We audit your existing content, identify gaps, and uncover opportunities for AI-powered creative differentiation." },
+  { step: "02", title: "Strategic Framework", description: "We build your custom AI content strategy — brand narrative, content pillars, campaign architecture, platform strategy, and production roadmap. Everything documented and actionable." },
+  { step: "03", title: "Creative Blueprinting", description: "Detailed creative briefs, visual direction guides, and production specifications for every piece of AI content. Your blueprint becomes the input for our AI production pipeline." },
+  { step: "04", title: "Execution & Optimization", description: "Strategy becomes production. We execute, measure, and optimize in real-time — adjusting creative direction based on performance data and market feedback." }
+];
+
+const deliverables = [
+  "Brand narrative & positioning document",
+  "AI content strategy framework",
+  "Multi-platform campaign architecture",
+  "Content calendar & production roadmap",
+  "Creative direction & visual identity guide",
+  "AI workflow integration plan",
+  "Competitive landscape analysis",
+  "Performance measurement framework"
+];
+
+const relatedServices = [
+  { title: "AI Film Production", slug: "ai-film-production", icon: "auto_awesome" },
+  { title: "Short Films", slug: "short-films", icon: "theaters" },
+  { title: "TV Commercials", slug: "tv-commercials", icon: "live_tv" },
+  { title: "UGC Content", slug: "ugc-content", icon: "smartphone" }
+];
+---
+
+<ServicePageLayout
+  title="AI Creative Strategy"
+  slug="creative-strategy"
+  tagline="The human blueprint for your digital presence. Deep storytelling and artistic intuition guiding cutting-edge AI workflows."
+  description="The most powerful AI production tools are only as good as the strategy that drives them. At Hinton Studios, our AI Creative Strategy service is the intellectual foundation that ensures every piece of AI-generated content — from films to commercials to UGC — serves a clear brand purpose, resonates with your target audience, and drives measurable business outcomes. We begin with human intelligence: deep brand analysis, audience research, competitive landscape mapping, and narrative architecture. Our strategists develop comprehensive creative frameworks that define not just what content to produce, but why, for whom, on which platforms, and in what sequence. This strategic blueprint then becomes the precise input for our AI production pipeline — ensuring that generative AI amplifies your brand's unique voice rather than diluting it. For brands and agencies looking to integrate AI into their creative workflows, we also offer AI workflow consulting — helping in-house teams adopt the tools, processes, and best practices that make AI production reliable, scalable, and brand-safe."
+  metaDescription="AI creative strategy & content consulting. We develop AI content strategies, campaign architectures & AI workflow integration for brands and agencies. Strategy-first AI filmmaking."
+  keywords="ai creative strategy, ai content strategy, ai advertising strategy, ai marketing strategy, ai creative consulting, ai content consulting, ai production strategy, ai brand strategy, ai video strategy, generative ai consulting, ai workflow consulting"
+  icon="architecture"
+  heroLabel="Service // Creative Strategy"
+  features={features}
+  process={process}
+  deliverables={deliverables}
+  relatedServices={relatedServices}
+/>

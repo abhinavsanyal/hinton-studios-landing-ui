@@ -1,0 +1,316 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  hasHeroParticles?: boolean;
+  fireConversion?: boolean;
+}
+
+const { 
+  title, 
+  description = "Cinema redefined. AI with a soul. Where modern AI meets the art of storytelling.",
+  keywords = "ai filmmaking, ai spec ads, ai advertisements, ai content creation, ai film production, ai video production, generative ai cinema, ai commercial production",
+  hasHeroParticles = false,
+  fireConversion = false
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.hintonstudios.com');
+const ogImage = new URL('/assets/og-image.jpg', Astro.site || 'https://www.hintonstudios.com');
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "VideoProductionCompany"],
+  "name": "Hinton Studios",
+  "url": "https://www.hintonstudios.com",
+  "logo": "https://www.hintonstudios.com/assets/logo.png",
+  "description": "India's premier AI filmmaking studio. We create cinematic AI spec ads, AI-generated commercials, short films & branded content using generative AI. Human-directed, AI-executed.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bengaluru",
+    "addressRegion": "Karnataka",
+    "addressCountry": "IN"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Abhinav Sanyal",
+    "jobTitle": "Founder & Director",
+    "url": "https://www.hintonstudios.com/about"
+  },
+  "sameAs": [
+    "https://www.instagram.com/hinton_studios/",
+    "https://youtube.com/@hintonpictures"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "url": "https://www.hintonstudios.com/services#contact"
+  },
+  "knowsAbout": [
+    "AI Filmmaking", "AI Spec Ads", "AI Advertisements", "AI Content Creation",
+    "Generative AI Video Production", "AI TV Commercials", "AI Short Films",
+    "AI UGC Content", "AI Creative Strategy"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI Video Production Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Film Production", "url": "https://www.hintonstudios.com/services/ai-film-production" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Short Films", "url": "https://www.hintonstudios.com/services/short-films" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI TV Commercials & Spec Ads", "url": "https://www.hintonstudios.com/services/tv-commercials" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI UGC & Social Content", "url": "https://www.hintonstudios.com/services/ugc-content" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Creative Strategy", "url": "https://www.hintonstudios.com/services/creative-strategy" }}
+    ]
+  }
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hinton Studios",
+  "url": "https://www.hintonstudios.com",
+  "description": "AI filmmaking studio creating spec ads, commercials, short films and branded content with generative AI",
+  "publisher": { "@type": "Organization", "name": "Hinton Studios" }
+};
+---
+
+<!doctype html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Hinton Studios" />
+    <meta name="language" content="en" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Hinton Studios" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    {Astro.url.pathname === '/' && (
+      <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+    )}
+    {Astro.url.pathname === '/' && (
+      <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+    )}
+
+    <!-- Google tag (gtag.js) - Google Ads: AW-16849162870 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16849162870"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-16849162870');
+    </script>
+    <!-- WhatsApp Conversion Tracking -->
+    <script is:inline>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-16849162870/Jw07CNPjpaMCEPakp-I-',
+          'event_callback': callback
+        });
+        return false;
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Use exact scripts and fonts per the original HTML structure -->
+    <script is:inline src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script is:inline src="/assets/tailwind-config.js"></script>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script is:inline>
+      // CRITICAL: Intercept YouTube iframes on mobile BEFORE browser downloads them
+      if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+        new MutationObserver(function(mutations) {
+          mutations.forEach(function(m) {
+            m.addedNodes.forEach(function(node) {
+              if (node.nodeType === 1) {
+                var iframes = node.tagName === 'IFRAME' ? [node] : Array.prototype.slice.call(node.querySelectorAll ? node.querySelectorAll('iframe[src*="youtube"]') : []);
+                iframes.forEach(function(f) {
+                  if (f.src && f.src.indexOf('youtube') !== -1) {
+                    f.setAttribute('data-src', f.src);
+                    f.removeAttribute('src');
+                  }
+                });
+              }
+            });
+          });
+        }).observe(document.documentElement, {childList: true, subtree: true});
+      }
+    </script>
+  </head>
+  <body class="bg-background text-on-surface font-body selection:bg-tertiary selection:text-on-tertiary-fixed overflow-x-hidden min-h-screen flex flex-col">
+    <div class="fixed top-0 z-[-2] h-screen w-screen bg-[#030303] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(100,99,160,0.15),rgba(255,255,255,0))]"></div>
+    <div class="fixed inset-0 z-[-1] pointer-events-none opacity-[0.10] mix-blend-screen bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    
+    <div id="scroll-progress"></div>
+
+    <!-- ================= NAV ================= -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-5 bg-[#030303]/80 md:bg-[#030303]/40 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+      <a href="/" class="text-2xl font-bold tracking-tighter text-[#c6c6c6] font-headline uppercase relative z-[60]">HINTON STUDIOS</a>
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-10 font-headline tracking-tight uppercase text-[12px] font-medium">
+        <a data-nav="/work" href="/work" class="hover:text-[#9093ff] transition-all duration-300">Work</a>
+        <a data-nav="/process" href="/process" class="hover:text-[#9093ff] transition-all duration-300">Process</a>
+        <a data-nav="/services" href="/services" class="hover:text-[#9093ff] transition-all duration-300">Services</a>
+        <a data-nav="/about" href="/about" class="hover:text-[#9093ff] transition-all duration-300">About</a>
+        <a data-nav="/services#contact" href="/services#contact" class="hover:text-[#9093ff] transition-all duration-300">Contact</a>
+      </div>
+      
+      <div class="flex items-center gap-4 relative z-[60]">
+        <a href="/start-project" class="hidden md:block bg-primary text-on-primary font-headline font-bold px-6 py-2 text-[10px] tracking-widest uppercase hover:bg-white transition-all duration-300 active:scale-95">START PROJECT</a>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white flex items-center justify-center p-2" aria-label="Toggle Navigation">
+          <span class="material-symbols-outlined text-3xl transition-transform duration-300" id="mobile-menu-icon" style="font-variation-settings: 'wght' 200;">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#030303]/95 backdrop-blur-3xl z-[55] flex flex-col justify-center items-center gap-10 font-headline tracking-widest uppercase text-2xl opacity-0 pointer-events-none transition-all duration-500">
+        <a href="/work" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all">Work</a>
+        <a href="/process" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-75">Process</a>
+        <a href="/services" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-150">Services</a>
+        <a href="/" class="text-white/70 hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-200">About</a>
+        <a href="/start-project" class="text-primary hover:text-white transition-colors duration-300 mobile-nav-link translate-y-4 opacity-0 transition-all delay-300 text-sm mt-4 border border-primary/30 px-6 py-3">START PROJECT</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-grow">
+      <slot />
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="w-full py-16 px-6 md:px-12 bg-black border-t border-outline-variant/10 mt-auto">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex flex-col items-center md:items-start gap-4">
+          <div class="text-lg font-bold text-[#c6c6c6] font-headline uppercase tracking-tighter">HINTON STUDIOS</div>
+          <p class="font-label text-[11px] uppercase tracking-[0.2em] text-[#767575]">© 2026 HINTON STUDIOS. THE DIGITAL AUTEUR.</p>
+        </div>
+        <div class="flex flex-wrap justify-center items-center gap-6 md:gap-8 font-label text-[11px] uppercase tracking-[0.2em] flex-wrap">
+          <a class="text-[#767575] hover:text-[#9093ff] transition-colors flex items-center" href="/privacy">Privacy</a>
+          <a class="text-[#767575] hover:text-[#9093ff] transition-colors flex items-center" href="/terms">Terms</a>
+          <a class="text-[#767575] hover:text-[#9093ff] transition-colors flex items-center" aria-label="Instagram" href="https://www.instagram.com/hinton_studios/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a class="text-[#767575] hover:text-[#9093ff] transition-colors flex items-center" aria-label="YouTube" href="https://youtube.com/@hintonpictures" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          </a>
+          <a class="text-[#767575] hover:text-[#9093ff] transition-colors flex items-center opacity-50 cursor-not-allowed" aria-label="X (Twitter)" href="#" title="Coming soon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+          </a>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-tertiary rounded-full animate-pulse-soft"></span>
+          <span class="font-label text-[9px] text-[#767575] tracking-[0.3em]">SERVERS OPTIMAL</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script is:inline src="/assets/app.js"></script>
+    <script type="module" src="/assets/enhance.js"></script>
+    <script is:inline src="/assets/gsap-animations.js"></script>
+    <script is:inline src="/assets/vfx.js"></script>
+    {hasHeroParticles && <script is:inline src="/assets/hero-text-particles.js"></script>}
+
+    <!-- Mobile Menu Script -->
+    <script is:inline>
+      (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const links = document.querySelectorAll('.mobile-nav-link');
+        
+        if (!btn || !menu) return;
+
+        function closeMenu() {
+          menu.classList.add('opacity-0', 'pointer-events-none');
+          icon.textContent = 'menu';
+          icon.style.transform = 'rotate(0deg)';
+          document.body.style.overflow = '';
+          
+          links.forEach(link => {
+            link.classList.remove('translate-y-0', 'opacity-100');
+            link.classList.add('translate-y-4', 'opacity-0');
+          });
+        }
+
+        function openMenu() {
+          menu.classList.remove('opacity-0', 'pointer-events-none');
+          icon.textContent = 'close';
+          icon.style.transform = 'rotate(90deg)';
+          document.body.style.overflow = 'hidden';
+          
+          links.forEach(link => {
+            link.classList.remove('translate-y-4', 'opacity-0');
+            link.classList.add('translate-y-0', 'opacity-100');
+          });
+        }
+
+        btn.addEventListener('click', () => {
+          const isOpen = !menu.classList.contains('pointer-events-none');
+          if (isOpen) closeMenu();
+          else openMenu();
+        });
+
+        links.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+
+        window.addEventListener('pageshow', (event) => {
+          if (event.persisted && !menu.classList.contains('pointer-events-none')) {
+            closeMenu();
+          }
+        });
+      })();
+    </script>
+    <script is:inline src="/assets/yt-override.js"></script>
+    
+    <!-- Setup active nav highlight based on current pathname -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('nav a[data-nav]');
+        navLinks.forEach(link => {
+          const navPath = link.getAttribute('data-nav');
+          if (navPath === currentPath) {
+             link.classList.add('text-white', 'font-bold');
+             link.classList.remove('text-[#c6c6c6]', 'hover:text-[#9093ff]');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

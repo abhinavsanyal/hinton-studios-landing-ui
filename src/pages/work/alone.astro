@@ -1,0 +1,28 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+
+const metadata = {
+  genre: "One Minute Horror",
+  runtime: "1:00",
+  year: "2024",
+  tools: ["Runway Gen-2", "Stable Audio", "Magnific AI", "Premiere Pro"],
+  role: "Director / AI Artist"
+};
+
+const brief = "An internal studio project aimed at pushing the boundaries of AI horror cinematography. The challenge was to tell a complete, terrifying story in exactly 60 seconds, relying entirely on visual storytelling and atmospheric sound design without any dialogue. A pure exercise in tension.";
+
+const approach = "Tension in horror relies on what you don't see. We generated deep, ambiguous shadows and highly textured environments using Midjourney, then used Magnific AI to upscale the grime and grit. The motion was handled by Runway Gen-2, specifically utilizing slow, creeping pans to simulate a human stalker's POV. The entire project was greenlit, generated, edited, and published in under 72 hours, demonstrating our rapid iteration capabilities.";
+---
+
+<CaseStudyLayout 
+  title="Alone" 
+  videoId="EEgggVtn1B0"
+  metadata={metadata}
+  brief={brief}
+  approach={approach}
+  prevSlug="3am-skincare"
+  prevTitle="3AM Skincare"
+  nextSlug="star-performer"
+  nextTitle="Star Performer"
+>
+</CaseStudyLayout>

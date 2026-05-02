@@ -1,0 +1,77 @@
+---
+import ServicePageLayout from '../../layouts/ServicePageLayout.astro';
+
+const features = [
+  {
+    title: "Festival-Ready Narratives",
+    description: "Boutique AI short films crafted for high-impact premieres, film festivals, and brand storytelling — delivering maximum emotional resonance in condensed runtime.",
+    icon: "emoji_events"
+  },
+  {
+    title: "Rapid Production Cycles",
+    description: "From concept to final cut in days, not months. Our AI production pipeline eliminates location scouting, crew scheduling, and equipment logistics entirely.",
+    icon: "timer"
+  },
+  {
+    title: "Genre Mastery",
+    description: "Horror, comedy, drama, thriller, sci-fi — our AI artists and filmmakers excel across every genre, bringing authentic tonal precision to each narrative.",
+    icon: "palette"
+  },
+  {
+    title: "Human Scripts, AI Execution",
+    description: "Every short film begins with human-written screenplays and storyboards. AI handles the physical production — shooting, lighting, and environmental design.",
+    icon: "edit_note"
+  },
+  {
+    title: "AI Character Performance",
+    description: "Generate photorealistic AI actors with nuanced emotional performances. No casting calls, no scheduling conflicts, no performance variability between takes.",
+    icon: "face"
+  },
+  {
+    title: "Multi-Format Delivery",
+    description: "Deliverables optimized for YouTube, Vimeo, Instagram, TikTok, film festivals, and broadcast. Multiple aspect ratios and resolutions from one production.",
+    icon: "aspect_ratio"
+  }
+];
+
+const process = [
+  { step: "01", title: "Concept & Script", description: "Human storytellers craft the screenplay, character arcs, and emotional beats. We architect narratives designed for maximum impact within short-form runtime." },
+  { step: "02", title: "Visual Previs", description: "AI-generated storyboards, character designs, and environment concepts. We establish the visual identity and tonal direction before production begins." },
+  { step: "03", title: "AI Cinematography", description: "Our expert AI artists function as cinematographers, shooting each scene with precise camera motion, lighting, and compositional control using generative AI." },
+  { step: "04", title: "Edit & Sound Design", description: "Professional editing, AI-augmented VFX, immersive sound design, and color grading. Every cut is intentional, every sound purposeful." }
+];
+
+const deliverables = [
+  "Original screenplay & storyboard",
+  "AI-generated concept art & character design",
+  "Complete short film (1–30 minutes)",
+  "4K/8K final master",
+  "Sound design & original music",
+  "Color grading & visual effects",
+  "Social media cut-downs (15s, 30s, 60s)",
+  "Festival submission package"
+];
+
+const relatedServices = [
+  { title: "AI Film Production", slug: "ai-film-production", icon: "auto_awesome" },
+  { title: "TV Commercials", slug: "tv-commercials", icon: "live_tv" },
+  { title: "UGC Content", slug: "ugc-content", icon: "smartphone" },
+  { title: "Creative Strategy", slug: "creative-strategy", icon: "architecture" }
+];
+---
+
+<ServicePageLayout
+  title="AI Short Films"
+  slug="short-films"
+  tagline="Boutique storytelling designed for high-impact premieres. Human scripts brought to life through advanced AI production workflows."
+  description="At Hinton Studios, we specialize in producing AI-generated short films that combine the raw emotional power of human storytelling with the limitless visual possibilities of generative AI. Our AI short film production service is designed for brands, creators, and filmmakers who want to push the boundaries of narrative cinema without the overhead of traditional film production. Each AI short film is meticulously directed by human filmmakers — we write every word, design every emotional beat, and orchestrate every narrative arc. AI then executes the physical production: cinematography, character performance, environment design, and lighting — all rendered with photorealistic fidelity. From horror comedies to brand-driven narratives, our AI short films are built for virality, festival premieres, and cultural impact."
+  metaDescription="AI short film production service. We create festival-ready AI-generated short films with human-directed storytelling and 100% AI production. Boutique narratives delivered in days."
+  keywords="ai short film, ai short film production, ai generated short film, ai filmmaking short film, generative ai short film, ai narrative film, ai film production company, ai video short, short film ai production"
+  icon="theaters"
+  heroLabel="Service // AI Short Films"
+  features={features}
+  process={process}
+  deliverables={deliverables}
+  videoId="EEgggVtn1B0"
+  relatedServices={relatedServices}
+/>

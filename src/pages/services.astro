@@ -1,0 +1,352 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "AI Video Production Services",
+  "description": "Professional AI filmmaking services including spec ads, TV commercials, short films, UGC content and creative strategy",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "AI Film Production", "url": "https://www.hintonstudios.com/services/ai-film-production" },
+    { "@type": "ListItem", "position": 2, "name": "AI Short Films", "url": "https://www.hintonstudios.com/services/short-films" },
+    { "@type": "ListItem", "position": 3, "name": "AI TV Commercials & Spec Ads", "url": "https://www.hintonstudios.com/services/tv-commercials" },
+    { "@type": "ListItem", "position": 4, "name": "AI UGC & Social Content", "url": "https://www.hintonstudios.com/services/ugc-content" },
+    { "@type": "ListItem", "position": 5, "name": "AI Creative Strategy", "url": "https://www.hintonstudios.com/services/creative-strategy" }
+  ]
+};
+---
+
+<Layout 
+  title="AI Filmmaking Services — Spec Ads, Commercials, Short Films & UGC | Hinton Studios" 
+  description="Professional AI film production services: AI spec ads, AI TV commercials, AI short films, AI UGC content creation & creative strategy. Hollywood-grade AI advertisements delivered in days."
+  keywords="ai filmmaking services, ai spec ads, ai advertisements, ai content creation, ai film production services, ai commercial production, ai tv commercial, ai short film production, ai ugc content, ai video production services"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(servicesJsonLd)} />
+  <main class="pt-32">
+    <!-- Hero -->
+    <section class="px-6 md:px-12 mb-24 max-w-[1600px] mx-auto" data-reveal>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div class="max-w-4xl relative">
+          <span class="font-label text-[11px] tracking-[0.2em] uppercase text-tertiary mb-6 block">Capabilities // 002</span>
+          <h1 class="font-headline text-[14vw] md:text-[11vw] font-bold tracking-tighter leading-[0.82] text-primary">
+            OUR<br /><span class="video-text-fill-tinted" style="background-image: url('https://img.youtube.com/vi/icHxNil5dvg/maxresdefault.jpg')">SERVICES</span>
+          </h1>
+        </div>
+        <div class="max-w-xs text-outline font-body text-xs uppercase tracking-widest leading-relaxed mb-6 border-l border-outline-variant pl-4">
+          Pioneering the intersection of traditional cinematic storytelling and generative artificial intelligence. Engineered by humans, executed by machines.
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Bento Grid -->
+    <section class="px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-px bg-outline-variant/15 border-y border-outline-variant/15 max-w-[1600px] mx-auto">
+      <!-- AI Film Production -->
+      <div class="md:col-span-8 bg-surface-container-low group overflow-hidden relative min-h-[600px] md:border-r border-outline-variant/10" data-reveal data-tilt data-glass>
+        <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none">
+          <iframe class="w-full h-full pointer-events-auto scale-[1.3]" src="https://www.youtube.com/embed/EEgggVtn1B0?autoplay=1&mute=1&playsinline=1&loop=1&playlist=EEgggVtn1B0&controls=1" title="Alone | One minute horror short film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="relative h-full p-8 md:p-12 flex flex-col justify-between z-10 viewfinder-corner pointer-events-none">
+          <div class="flex justify-between items-start">
+            <div class="font-label text-[9px] tracking-widest text-primary/70 uppercase bg-black/40 backdrop-blur px-2 py-1 border border-outline-variant/30">
+              PROD_TYPE: AI_FEATURE // HUMAN_DIRECTED // AI_SHOT
+            </div>
+            <span class="material-symbols-outlined text-tertiary text-4xl">auto_awesome</span>
+          </div>
+          <div>
+            <h3 class="font-headline text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tighter">AI Film Production</h3>
+            <p class="font-body text-on-surface-variant max-w-md text-sm leading-relaxed">
+              Cinematic narratives built on profound human storytelling, shot entirely using 100% generative AI. Delivering Hollywood-grade visuals without the constraints of physical cameras.
+            </p>
+            <a href="/services/ai-film-production" class="mt-6 inline-flex items-center gap-3 font-headline text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary hover:text-white transition-colors pointer-events-auto">EXPLORE SERVICE <span class="material-symbols-outlined text-sm">arrow_right_alt</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Short Films -->
+      <div class="md:col-span-4 bg-surface-container group overflow-hidden relative min-h-[600px]" data-reveal style="--reveal-delay: 80ms">
+        <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80 z-10 pointer-events-none"></div>
+        <iframe class="absolute inset-0 w-full h-full pointer-events-auto scale-[1.3]" src="https://www.youtube.com/embed/icHxNil5dvg?autoplay=1&mute=1&loop=1&playlist=icHxNil5dvg&controls=1" title="Star Performer of the month | One minute horror short film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="relative h-full p-8 md:p-12 flex flex-col justify-between z-20 viewfinder-corner pointer-events-none">
+          <div class="font-label text-[9px] tracking-widest text-primary/70 uppercase">CAT: NARRATIVE // LENS: 35MM_PRIME</div>
+          <div>
+            <h3 class="font-headline text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tighter">Short Films</h3>
+            <p class="font-body text-on-surface-variant text-sm leading-relaxed">
+              Boutique storytelling designed for high-impact premieres. Human scripts brought to life through advanced AI production workflows.
+            </p>
+            <a href="/services/short-films" class="mt-6 inline-flex items-center gap-3 font-headline text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary hover:text-white transition-colors pointer-events-auto">EXPLORE SERVICE <span class="material-symbols-outlined text-sm">arrow_right_alt</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TV Commercials -->
+      <div class="md:col-span-4 bg-surface-container-high group overflow-hidden relative min-h-[400px] md:border-r border-outline-variant/10" data-reveal>
+        <div class="absolute inset-0 bg-tertiary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative h-full p-8 md:p-12 flex flex-col justify-between viewfinder-corner">
+          <span class="font-label text-[9px] tracking-widest text-primary/50 uppercase">BROADCAST_MOD: 4K_UHD</span>
+          <div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-2 tracking-tighter uppercase">TV Commercials</h3>
+            <p class="font-body text-xs text-on-surface-variant leading-relaxed">
+              Slick, high-fidelity commercial productions combining human marketing strategy with rapid AI execution.
+            </p>
+            <a href="/services/tv-commercials" class="mt-4 inline-flex items-center gap-2 font-headline text-[9px] font-bold tracking-[0.3em] uppercase text-tertiary hover:text-white transition-colors">EXPLORE <span class="material-symbols-outlined text-xs">arrow_right_alt</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- UGCs -->
+      <div class="md:col-span-4 bg-surface-container group overflow-hidden relative min-h-[400px] md:border-r border-outline-variant/10" data-reveal style="--reveal-delay: 80ms">
+        <div class="relative h-full p-8 md:p-12 flex flex-col justify-between viewfinder-corner">
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 rounded-full bg-error animate-pulse-soft"></div>
+            <span class="font-label text-[9px] tracking-widest text-primary/50 uppercase">REC_LIVE // ISO: 800</span>
+          </div>
+          <div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-2 tracking-tighter uppercase">UGCs</h3>
+            <p class="font-body text-xs text-on-surface-variant leading-relaxed">
+              Social-first content powered by AI casting and generative production, bridging the gap between brand and community.
+            </p>
+            <a href="/services/ugc-content" class="mt-4 inline-flex items-center gap-2 font-headline text-[9px] font-bold tracking-[0.3em] uppercase text-tertiary hover:text-white transition-colors">EXPLORE <span class="material-symbols-outlined text-xs">arrow_right_alt</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creative Strategy -->
+      <div class="md:col-span-4 bg-surface-container-low group overflow-hidden relative min-h-[400px]" data-reveal style="--reveal-delay: 160ms">
+        <div class="relative h-full p-8 md:p-12 flex flex-col justify-between viewfinder-corner">
+          <span class="font-label text-[9px] tracking-widest text-primary/50 uppercase">CORE_INTEL: ARCHITECTURE</span>
+          <div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-2 tracking-tighter uppercase">Creative Strategy</h3>
+            <p class="font-body text-xs text-on-surface-variant leading-relaxed">
+              The human blueprint for your digital presence. Deep storytelling and artistic intuition guiding cutting-edge AI workflows.
+            </p>
+            <a href="/services/creative-strategy" class="mt-4 inline-flex items-center gap-2 font-headline text-[9px] font-bold tracking-[0.3em] uppercase text-tertiary hover:text-white transition-colors">EXPLORE <span class="material-symbols-outlined text-xs">arrow_right_alt</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Viral CTA / Inquiry Form -->
+    <section id="contact" class="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-black">
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 40% at 30% 50%, rgba(144, 147, 255, 0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 35% at 70% 50%, rgba(248, 113, 113, 0.03) 0%, transparent 70%);"></div>
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start relative z-10">
+        <div class="lg:sticky lg:top-40" data-reveal>
+          <span class="font-label text-[12px] tracking-[0.4em] uppercase text-tertiary mb-8 block font-bold">Protocol: Rapid Expansion</span>
+          <h2 class="font-headline text-[18vw] md:text-[10vw] font-bold tracking-tighter text-white leading-[0.75] mb-12">
+            GO<br /><span class="text-tertiary italic">VIRAL.</span>
+          </h2>
+          <div class="max-w-[500px] space-y-6">
+            <p class="font-body text-lg text-outline leading-relaxed">
+              We don't wait for trends. We engineer them.<br/>
+              Cinematic AI execution built for cultural cut-through.
+            </p>
+            <div class="h-px w-24 bg-tertiary"></div>
+            <div class="flex flex-wrap gap-8 pt-4">
+              <div>
+                <p class="font-headline text-2xl md:text-3xl font-bold text-primary">8K Anamorphic</p>
+                <p class="font-label text-[9px] text-outline tracking-[0.3em] uppercase mt-1">Cinematic Grade</p>
+              </div>
+              <div>
+                <p class="font-headline text-2xl md:text-3xl font-bold text-primary">Days, Not Months</p>
+                <p class="font-label text-[9px] text-outline tracking-[0.3em] uppercase mt-1">Rapid Turnaround</p>
+              </div>
+              <div>
+                <p class="font-headline text-2xl md:text-3xl font-bold text-primary">Vertical-Native</p>
+                <p class="font-label text-[9px] text-outline tracking-[0.3em] uppercase mt-1">Built For Feed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-black/40 backdrop-blur-3xl p-6 md:p-16 border border-white/5 shadow-2xl" data-reveal style="--reveal-delay: 160ms">
+          <div class="flex justify-between items-center mb-12 md:mb-16">
+            <span class="font-label text-[10px] text-outline-variant uppercase tracking-widest font-bold">Transmission_Socket: 004</span>
+            <div class="flex gap-1">
+              <div class="w-1 h-1 bg-tertiary rounded-full"></div>
+              <div class="w-1 h-1 bg-tertiary/30 rounded-full"></div>
+              <div class="w-1 h-1 bg-tertiary/10 rounded-full"></div>
+            </div>
+          </div>
+
+          <form id="contact-form" class="space-y-10 md:space-y-12">
+            <!-- FormSubmit config -->
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_subject" value="New Project Transmission - Hinton Studios" />
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+              <div class="space-y-4">
+                <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Name</label>
+                <input type="text" name="Name" required class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-headline uppercase text-lg placeholder:text-outline-variant/20 transition-all pb-4" placeholder="YOUR NAME" />
+              </div>
+              <div class="space-y-4">
+                <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Email</label>
+                <input type="email" name="Email" required class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-headline uppercase text-lg placeholder:text-outline-variant/20 transition-all pb-4" placeholder="EMAIL ADDRESS" />
+              </div>
+            </div>
+            
+            <div class="space-y-4 relative z-50" id="custom-dropdown-container">
+              <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Category of Service</label>
+              <input type="hidden" name="Category" id="category-input" />
+              <button type="button" id="dropdown-button" class="w-full bg-transparent border-0 border-b border-white/10 text-left font-headline uppercase text-lg text-outline-variant/20 hover:border-tertiary transition-all pb-4 outline-none cursor-pointer flex justify-between items-center">
+                <span id="dropdown-selected-text" class="transition-colors duration-300">SELECT CATEGORY</span>
+                <span class="material-symbols-outlined text-outline-variant/30 text-xl transition-transform duration-300" id="dropdown-icon">expand_more</span>
+              </button>
+              
+              <ul id="dropdown-menu" class="absolute top-[80%] left-0 w-full mt-2 bg-[#030303] border border-white/10 shadow-2xl z-50 opacity-0 pointer-events-none translate-y-2 transition-all duration-300 flex flex-col py-2 rounded-sm">
+                <li data-val="Feature Film" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">FEATURE FILM</li>
+                <li data-val="Advertisement" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">ADVERTISEMENT</li>
+                <li data-val="UGC" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">UGC</li>
+                <li data-val="Short Film" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">SHORT FILM</li>
+                <li data-val="Other" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">OTHER</li>
+              </ul>
+            </div>
+
+            <div class="space-y-4">
+              <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Describe The Idea</label>
+              <textarea name="Idea_Description" required rows="4" class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-sm placeholder:text-outline-variant/20 resize-none transition-all pb-4" placeholder="DESCRIBE THE UNIMAGINABLE..."></textarea>
+            </div>
+            <button type="submit" id="submit-action-btn" disabled class="w-full py-6 md:py-8 bg-white/10 text-white/30 font-headline font-black text-sm tracking-[0.3em] transition-all duration-500 flex justify-between items-center px-6 md:px-10 group relative overflow-hidden disabled:cursor-not-allowed">
+              <span class="relative z-10 btn-text">INITIATE PHASE ONE</span>
+              <span class="material-symbols-outlined relative z-10 group-hover:translate-x-3 transition-transform duration-500">arrow_right_alt</span>
+              <div class="absolute inset-0 bg-tertiary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <script is:inline>
+    // Background Submission Handler
+    document.addEventListener('DOMContentLoaded', () => {
+      // Custom Dropdown Logic
+      const dropdownBtn = document.getElementById('dropdown-button');
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      const categoryInput = document.getElementById('category-input');
+      const selectedText = document.getElementById('dropdown-selected-text');
+      const dropdownIcon = document.getElementById('dropdown-icon');
+      
+      if(dropdownBtn) {
+        dropdownBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = dropdownMenu.classList.contains('pointer-events-auto');
+          if (isOpen) {
+            closeDropdown();
+          } else {
+            dropdownMenu.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+            dropdownMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            dropdownIcon.style.transform = 'rotate(180deg)';
+          }
+        });
+
+        dropdownMenu.querySelectorAll('li').forEach(item => {
+          item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const val = item.getAttribute('data-val');
+            categoryInput.value = val;
+            
+            // Dispatch event to trigger validation check
+            categoryInput.dispatchEvent(new Event('change'));
+            
+            selectedText.textContent = item.textContent;
+            selectedText.classList.remove('text-outline-variant/20', 'text-[#ff4545]');
+            selectedText.classList.add('text-white');
+            closeDropdown();
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            closeDropdown();
+          }
+        });
+      }
+
+      function closeDropdown() {
+        if(dropdownMenu) {
+          dropdownMenu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+          dropdownMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+          dropdownIcon.style.transform = 'rotate(0deg)';
+        }
+      }
+
+      const contactForm = document.getElementById('contact-form');
+      if(contactForm) {
+        // Validation Logic
+        const submitBtn = document.getElementById('submit-action-btn');
+        const requiredInputs = contactForm.querySelectorAll('[required], #category-input');
+        
+        function validateForm() {
+          let isValid = true;
+          // Check standard inputs
+          const textInputs = contactForm.querySelectorAll('input[type="text"], input[type="email"], textarea');
+          textInputs.forEach(input => {
+            if(!input.value.trim() && input.hasAttribute('required')) isValid = false;
+          });
+          // Check hidden dropdown input
+          if(!categoryInput.value) { isValid = false; }
+          
+          if(isValid) {
+            submitBtn.disabled = false;
+            submitBtn.className = "w-full py-6 md:py-8 bg-white text-black font-headline font-black text-sm tracking-[0.3em] hover:text-white transition-all duration-500 flex justify-between items-center px-6 md:px-10 group relative overflow-hidden focus:outline-none";
+          } else {
+            submitBtn.disabled = true;
+            submitBtn.className = "w-full py-6 md:py-8 bg-white/10 text-white/30 font-headline font-black text-sm tracking-[0.3em] transition-all duration-500 flex justify-between items-center px-6 md:px-10 group relative overflow-hidden disabled:cursor-not-allowed";
+          }
+        }
+        
+        requiredInputs.forEach(input => {
+          input.addEventListener('input', validateForm);
+          input.addEventListener('change', validateForm);
+        });
+
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const btn = this.querySelector('button[type="submit"]');
+          const btnText = btn.querySelector('.btn-text');
+          const originalText = btnText.textContent;
+          
+          if(!categoryInput.value) {
+            selectedText.classList.add('text-[#ff4545]');
+            selectedText.textContent = "REQUIRED: SELECT CATEGORY";
+            setTimeout(() => {
+              if(!categoryInput.value) {
+                selectedText.classList.remove('text-[#ff4545]');
+                selectedText.textContent = "SELECT CATEGORY";
+              }
+            }, 3000);
+            return;
+          }
+
+          btnText.textContent = 'TRANSMITTING...';
+          btn.disabled = true;
+
+          const formData = new FormData(this);
+
+          fetch('https://formsubmit.co/ajax/hinton.motion@gmail.com', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json'
+            },
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+            btnText.textContent = 'TRANSMISSION SENT';
+            // Redirect to thank-you page with GA conversion tracking
+            setTimeout(() => {
+              window.location.href = '/thank-you';
+            }, 800);
+          })
+          .catch(error => {
+            btnText.textContent = 'NETWORK ERROR';
+            setTimeout(() => {
+              btnText.textContent = originalText;
+              btn.disabled = false;
+            }, 4000);
+          });
+        });
+      }
+    });
+  </script>
+</Layout>

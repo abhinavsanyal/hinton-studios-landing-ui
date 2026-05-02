@@ -1,0 +1,28 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+
+const metadata = {
+  genre: "Horror Comedy AD",
+  runtime: "1:30",
+  year: "2024",
+  tools: ["Kling 1.0", "Midjourney v6", "Suno", "Logic Pro", "DaVinci Resolve"],
+  role: "Concept to Final Render"
+};
+
+const brief = "3AM Skincare, a bold new Gen-Z beauty brand, wanted an ad that spoke to the midnight anxieties of their target demographic. They asked for a narrative that was 'terrifying until it isn't.' The brief required a seamless blend of psychological thriller elements with a tongue-in-cheek product reveal.";
+
+const approach = "We utilized Kling 1.0 to achieve hyper-realistic human expressions, capturing the terror of a protagonist finding 'something' in the mirror. The suspense was carefully architected using a custom sound score generated via Suno and mixed in Logic Pro. Generative AI allowed us to easily create impossible lighting scenarios, shifting from a cold, dreadful blue to a warm, inviting glow the moment the skincare product is revealed. Cost-effective, studio-light quality, without the studio.";
+---
+
+<CaseStudyLayout 
+  title="3AM Skincare" 
+  videoId="sDfixts3h4o"
+  metadata={metadata}
+  brief={brief}
+  approach={approach}
+  prevSlug="thirsty"
+  prevTitle="Thirsty"
+  nextSlug="alone"
+  nextTitle="Alone"
+>
+</CaseStudyLayout>

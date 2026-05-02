@@ -1,0 +1,26 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+
+const metadata = {
+  genre: "Horror Comedy AD",
+  runtime: "0:59",
+  year: "2024",
+  tools: ["Midjourney v6", "Runway Gen-2", "ElevenLabs", "FCPX", "Topaz Video AI"],
+  role: "Full Production"
+};
+
+const brief = "A D2C beverage brand needed a viral, scroll-stopping advertisement that broke the mold of traditional 'refreshing drink' commercials. They wanted an edge—something that leveraged psychological horror tropes, but delivered a punchline that left the audience laughing and sharing. The goal: high engagement on TikTok and Instagram Reels.";
+
+const approach = "We leaned heavily into the aesthetics of 1980s slasher films using Midjourney to lock the look-dev. Using Runway Gen-2, we animated the eeriness of a late-night chase, meticulously controlling camera motion to build tension. The sound design was critical, combining cinematic horror rises with comedic timing drops. By completely foregoing physical production, we delivered multiple variations of the final joke within a week, allowing the brand to A/B test the best viral hit.";
+---
+
+<CaseStudyLayout 
+  title="Thirsty" 
+  videoId="cbFiwFXRqn0"
+  metadata={metadata}
+  brief={brief}
+  approach={approach}
+  nextSlug="3am-skincare"
+  nextTitle="3AM Skincare"
+>
+</CaseStudyLayout>

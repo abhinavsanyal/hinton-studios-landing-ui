@@ -1,0 +1,76 @@
+---
+import ServicePageLayout from '../../layouts/ServicePageLayout.astro';
+
+const features = [
+  {
+    title: "Full-Length AI Cinema",
+    description: "End-to-end production of cinematic narratives — from short-form branded stories to feature-length films — shot entirely using 100% generative AI. No cameras, no crews, no constraints.",
+    icon: "movie"
+  },
+  {
+    title: "Hollywood-Grade Visuals",
+    description: "8K anamorphic quality with photorealistic character rendering, dynamic lighting, and cinematic depth-of-field. Our AI cinematographers replicate the look and feel of premium film stocks.",
+    icon: "photo_camera"
+  },
+  {
+    title: "Human-Directed Storytelling",
+    description: "Every frame is guided by profound human storytelling intelligence. We write the script, design the emotion, and orchestrate the narrative arc — AI executes the impossible visuals.",
+    icon: "psychology"
+  },
+  {
+    title: "Rapid Iteration & Delivery",
+    description: "Produce multiple variations, A/B test narrative beats, and iterate at algorithmic speed. What takes traditional productions months, we deliver in days.",
+    icon: "speed"
+  },
+  {
+    title: "AI Casting & Character Design",
+    description: "Generate photorealistic digital actors with precise demographic targeting, emotion mapping, and brand alignment. No talent agencies, no scheduling conflicts.",
+    icon: "person"
+  },
+  {
+    title: "Cross-Platform Mastering",
+    description: "Deliverables optimized for cinema, streaming, broadcast, and social — all from a single production pipeline. Aspect ratios, resolutions, and formats tailored to your distribution strategy.",
+    icon: "devices"
+  }
+];
+
+const process = [
+  { step: "01", title: "Script & Direction", description: "Human-crafted screenplay, storyboards, shot lists, and directorial vision. We architect the emotional blueprint that AI will execute." },
+  { step: "02", title: "Look Development", description: "AI-generated concept art, character designs, set designs, and costume references. We lock the visual identity before a single frame is rendered." },
+  { step: "03", title: "AI Production", description: "Our team of expert AI cinematographers shoot entire sequences using state-of-the-art generative models. Every frame is directed, not generated randomly." },
+  { step: "04", title: "Post & Mastering", description: "AI-augmented VFX, CGI compositing, sound design, color grading, and final mastering. The director's cut, polished to perfection." }
+];
+
+const deliverables = [
+  "Full screenplay & storyboard package",
+  "AI-generated concept art & look-dev",
+  "Complete film production (any duration)",
+  "4K/8K final master deliverables",
+  "Sound design & original score",
+  "Color grading & post-production",
+  "Multiple format exports (Cinema, TV, Web)",
+  "Behind-the-scenes production documentation"
+];
+
+const relatedServices = [
+  { title: "Short Films", slug: "short-films", icon: "theaters" },
+  { title: "TV Commercials", slug: "tv-commercials", icon: "live_tv" },
+  { title: "UGC Content", slug: "ugc-content", icon: "smartphone" },
+  { title: "Creative Strategy", slug: "creative-strategy", icon: "architecture" }
+];
+---
+
+<ServicePageLayout
+  title="AI Film Production"
+  slug="ai-film-production"
+  tagline="Cinematic narratives built on profound human storytelling, shot entirely using 100% generative AI."
+  description="Hinton Studios pioneers the future of AI filmmaking by combining deep human storytelling intelligence with cutting-edge generative AI production. We craft cinematic narratives — from branded stories to feature-length films — that deliver Hollywood-grade visuals without the constraints of physical cameras, crews, or studio infrastructure. Our proprietary pipeline enables us to produce photorealistic AI-generated films at a fraction of the cost and timeline of traditional production, while maintaining the emotional depth and artistic vision that only human direction can provide. Whether you need an AI spec ad that stops thumbs or a full AI-generated feature film, our team of filmmakers and AI artists engineer every frame with intention."
+  metaDescription="Professional AI film production services. We create cinematic AI films, AI-generated movies & branded content with Hollywood-grade visuals. Human-directed, 100% AI-executed filmmaking."
+  keywords="ai film production, ai filmmaking, ai generated film, ai movie production, generative ai cinema, ai film production company, ai video production, ai filmmaking studio, artificial intelligence filmmaking, ai film maker"
+  icon="auto_awesome"
+  heroLabel="Service // AI Film Production"
+  features={features}
+  process={process}
+  deliverables={deliverables}
+  relatedServices={relatedServices}
+/>
