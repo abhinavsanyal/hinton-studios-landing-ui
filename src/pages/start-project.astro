@@ -355,34 +355,68 @@ import Layout from '../layouts/Layout.astro';
         submitBtn.disabled = true;
         submitBtn.classList.add('opacity-70','cursor-not-allowed');
 
-        // Gather budget
+        // Gather form values
+        const customerName = document.getElementById('user_name').value;
+        const customerEmail = document.getElementById('user_email').value;
+        const customerPhone = document.getElementById('user_phone').value || 'Not provided';
+        const serviceCategory = ddVal.value;
+        const projectDesc = document.getElementById('project_description').value;
         const budgetRadio = form.querySelector('input[name="budget"]:checked');
         const budgetVal = budgetRadio ? budgetRadio.value : 'Not specified';
+        const timelineVal = document.getElementById('timeline').value || 'Not specified';
+        const referencesVal = document.getElementById('references').value || 'None';
+        const briefLinkVal = document.getElementById('brief_link').value || 'None';
+        const sourceVal = document.getElementById('source').value || 'Not specified';
+
+        // Build the message body for the team notification (Content tab)
+        const messageBody = 
+          'Name: ' + customerName + '\n' +
+          'Email: ' + customerEmail + '\n' +
+          'Phone: ' + customerPhone + '\n' +
+          'Service: ' + serviceCategory + '\n' +
+          'Description: ' + projectDesc + '\n' +
+          'Budget: ' + budgetVal + '\n' +
+          'Timeline: ' + timelineVal + '\n' +
+          'References: ' + referencesVal + '\n' +
+          'Brief/Deck: ' + briefLinkVal + '\n' +
+          'Source: ' + sourceVal;
 
         const templateParams = {
-          user_name: document.getElementById('user_name').value,
-          user_email: document.getElementById('user_email').value,
-          user_phone: document.getElementById('user_phone').value || 'Not provided',
-          service_category: ddVal.value,
-          project_description: document.getElementById('project_description').value,
+          // --- Auto-Reply template variables ---
+          // To Email field in template uses {{email}} → customer's email
+          email: customerEmail,
+          // Body uses {{name}} → customer's name
+          name: customerName,
+          // Body uses {{title}} → project summary
+          title: serviceCategory + ' — ' + projectDesc.substring(0, 120),
+
+          // --- Main Content template variables ---
+          // These are available for the Content tab template body
+          from_name: customerName,
+          reply_to: customerEmail,
+          phone: customerPhone,
+          service_category: serviceCategory,
+          project_description: projectDesc,
           budget: budgetVal,
-          timeline: document.getElementById('timeline').value || 'Not specified',
-          references: document.getElementById('references').value || 'None',
-          brief_link: document.getElementById('brief_link').value || 'None',
-          source: document.getElementById('source').value || 'Not specified',
+          timeline: timelineVal,
+          references: referencesVal,
+          brief_link: briefLinkVal,
+          source: sourceVal,
+          message: messageBody,
         };
 
-        emailjs.send('service_csecisb', 'template_w8a13oq', templateParams)
+        emailjs.send('service_csecisb', 'template_nzn5218', templateParams)
           .then(() => {
             btnText.textContent = 'Sent Successfully!';
             setTimeout(() => { window.location.href = '/thank-you'; }, 800);
           })
           .catch((err) => {
             console.error('EmailJS Error:', err);
+            const errMsg = (err && err.text) ? err.text : 'Unknown error';
             btnText.textContent = 'Error — Try Again';
             submitBtn.disabled = false;
             submitBtn.classList.remove('opacity-70','cursor-not-allowed');
-            setTimeout(() => { btnText.textContent = 'Submit Inquiry'; }, 4000);
+            setTimeout(() => { btnText.textContent = 'Submit Inquiry'; }, 5000);
           });
       });
     });
