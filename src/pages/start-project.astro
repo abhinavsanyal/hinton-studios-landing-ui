@@ -7,67 +7,390 @@ import Layout from '../layouts/Layout.astro';
   description="Ready to create an AI spec ad, AI commercial, or AI short film? Submit your project details and our team will engineer your vision using generative AI filmmaking."
   keywords="hire ai filmmaking studio, ai film production quote, start ai video project, ai spec ad quote, ai commercial production quote, ai content creation inquiry"
 >
+  <!-- EmailJS SDK -->
+  <script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <main class="min-h-screen pt-32 pb-24 bg-surface relative overflow-hidden">
     <!-- Grid Background -->
     <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
+    <!-- Ambient Glow -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 40% at 30% 50%, rgba(144, 147, 255, 0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 35% at 70% 50%, rgba(248, 113, 113, 0.03) 0%, transparent 70%);"></div>
 
-    <div class="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
+    <div class="max-w-3xl mx-auto px-6 md:px-12 relative z-10">
       
       <!-- Header -->
-      <header class="mb-16" data-reveal>
+      <header class="mb-12" data-reveal>
         <span class="font-label text-[10px] tracking-[0.4em] uppercase text-tertiary mb-6 block font-bold flex items-center gap-4">
           <div class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse-soft"></div>
           SECURE CONNECTION ESTABLISHED
         </span>
-        <h1 class="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-white mb-6">INITIATE PHASE ONE</h1>
-        <p class="font-body text-outline-variant leading-relaxed max-w-xl">
-          Enter your parameters below. Our hybrid production engine requires precise inputs to calculate feasibility, timeline, and resource allocation.
+        <h1 class="font-headline text-4xl md:text-6xl font-bold uppercase tracking-tighter text-white mb-6 leading-[0.9]">Start Your<br/><span class="text-tertiary italic">Project.</span></h1>
+        <p class="font-body text-on-surface-variant leading-relaxed max-w-xl text-sm">
+          Tell us about your vision. We'll respond within 24–48 hours with a tailored creative strategy and production timeline.
         </p>
       </header>
 
-      <!-- Multi-stage Form Container (React/Island placeholder) -->
-      <div id="discovery-form-root" class="bg-black/60 border border-outline-variant/20 p-8 md:p-12 shadow-2xl backdrop-blur-xl" data-reveal style="--reveal-delay: 100ms">
-        
-        <!-- UI Stub for Form -->
-        <div class="flex justify-between items-center border-b border-outline-variant/20 pb-6 mb-8">
-          <div class="font-label text-[10px] tracking-widest text-[#c6c6c6] uppercase">STAGE_01 // VISION</div>
-          <div class="font-label text-[10px] tracking-widest text-primary uppercase">01 / 05</div>
+      <!-- Step Progress -->
+      <div class="flex items-center gap-4 mb-10" data-reveal style="--reveal-delay: 80ms">
+        <div class="flex items-center gap-3">
+          <div id="step-dot-1" class="w-8 h-8 rounded-full bg-tertiary flex items-center justify-center text-black font-headline text-xs font-bold transition-all duration-500">1</div>
+          <span id="step-label-1" class="font-label text-[10px] tracking-[0.2em] uppercase text-tertiary font-bold transition-colors duration-500">Your Info</span>
         </div>
+        <div class="flex-1 h-px bg-outline-variant/20 relative">
+          <div id="step-progress-bar" class="absolute inset-y-0 left-0 bg-tertiary transition-all duration-700 ease-out" style="width: 0%"></div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div id="step-dot-2" class="w-8 h-8 rounded-full bg-outline-variant/20 flex items-center justify-center text-outline font-headline text-xs font-bold transition-all duration-500">2</div>
+          <span id="step-label-2" class="font-label text-[10px] tracking-[0.2em] uppercase text-outline/50 font-bold transition-colors duration-500">Details</span>
+        </div>
+      </div>
 
-        <form class="space-y-8" id="stub-discovery-form">
-          <p class="font-headline text-2xl font-bold text-white uppercase tracking-tighter mb-8">What are we building?</p>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <label class="border border-outline-variant/30 hover:border-tertiary p-6 cursor-pointer hover:bg-surface-container-low transition-all group flex items-center gap-4">
-              <input type="radio" name="vision" value="Brand Commercial" class="accent-tertiary w-4 h-4 bg-transparent border-outline-variant/50" />
-              <span class="font-headline tracking-widest uppercase text-sm group-hover:text-tertiary">Brand Commercial / TVC</span>
-            </label>
-            <label class="border border-outline-variant/30 hover:border-tertiary p-6 cursor-pointer hover:bg-surface-container-low transition-all group flex items-center gap-4">
-              <input type="radio" name="vision" value="Social Campaign" class="accent-tertiary w-4 h-4 bg-transparent border-outline-variant/50" />
-              <span class="font-headline tracking-widest uppercase text-sm group-hover:text-tertiary">Social Campaign</span>
-            </label>
-            <label class="border border-outline-variant/30 hover:border-tertiary p-6 cursor-pointer hover:bg-surface-container-low transition-all group flex items-center gap-4">
-              <input type="radio" name="vision" value="Music Video" class="accent-tertiary w-4 h-4 bg-transparent border-outline-variant/50" />
-              <span class="font-headline tracking-widest uppercase text-sm group-hover:text-tertiary">Music Video</span>
-            </label>
-            <label class="border border-outline-variant/30 hover:border-tertiary p-6 cursor-pointer hover:bg-surface-container-low transition-all group flex items-center gap-4">
-              <input type="radio" name="vision" value="Short Film" class="accent-tertiary w-4 h-4 bg-transparent border-outline-variant/50" />
-              <span class="font-headline tracking-widest uppercase text-sm group-hover:text-tertiary">Short Film</span>
-            </label>
-          </div>
+      <!-- Form Container -->
+      <div class="bg-black/40 backdrop-blur-xl border border-white/5 shadow-2xl overflow-hidden" data-reveal style="--reveal-delay: 160ms">
+        
+        <form id="project-form" class="relative" novalidate>
 
-          <div class="flex justify-end pt-8">
-             <button type="button" class="group flex items-center gap-4 font-headline text-sm tracking-[0.3em] uppercase font-bold text-black bg-white px-8 py-4 hover:bg-tertiary transition-colors">
-                PROCEED
+          <!-- ============ STEP 1 ============ -->
+          <div id="step-1" class="p-8 md:p-12 transition-all duration-500">
+            <div class="flex justify-between items-center mb-10">
+              <span class="font-label text-[10px] text-outline-variant uppercase tracking-widest font-bold">Step 1 — Your Info</span>
+              <span class="font-label text-[10px] text-tertiary uppercase tracking-widest font-bold">01 / 02</span>
+            </div>
+
+            <div class="space-y-8">
+              <!-- Name + Email row -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                  <label for="user_name" class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Name <span class="text-error">*</span></label>
+                  <input type="text" id="user_name" name="user_name" required autocomplete="name"
+                    class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-base transition-all pb-3 placeholder:text-outline-variant/30 placeholder:text-sm" 
+                    placeholder="Your name" />
+                </div>
+                <div class="space-y-3">
+                  <label for="user_email" class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Email <span class="text-error">*</span></label>
+                  <input type="email" id="user_email" name="user_email" required autocomplete="email"
+                    class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-base transition-all pb-3 placeholder:text-outline-variant/30 placeholder:text-sm" 
+                    placeholder="you@company.com" />
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="space-y-3">
+                <label for="user_phone" class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Phone <span class="text-outline-variant/40 font-normal">(Optional)</span></label>
+                <input type="tel" id="user_phone" name="user_phone" autocomplete="tel"
+                  class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-base transition-all pb-3 placeholder:text-outline-variant/30 placeholder:text-sm" 
+                  placeholder="+91 98765 43210" />
+              </div>
+
+              <!-- Service Category -->
+              <div class="space-y-3 relative" id="svc-dropdown-wrap">
+                <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Category of Service <span class="text-error">*</span></label>
+                <input type="hidden" name="service_category" id="svc-category-val" />
+                <button type="button" id="svc-dropdown-btn" class="w-full bg-transparent border-0 border-b border-white/10 text-left font-body text-base text-outline-variant/30 hover:border-tertiary transition-all pb-3 outline-none cursor-pointer flex justify-between items-center">
+                  <span id="svc-sel-text" class="transition-colors duration-300 text-sm">Select a service</span>
+                  <span class="material-symbols-outlined text-outline-variant/30 text-xl transition-transform duration-300" id="svc-dd-icon">expand_more</span>
+                </button>
+                <ul id="svc-dd-menu" class="absolute left-0 right-0 top-full mt-1 bg-[#0a0a0a] border border-white/10 shadow-2xl z-50 opacity-0 pointer-events-none translate-y-2 transition-all duration-300 flex flex-col py-1 rounded-sm">
+                  <li data-val="AI Film Production" class="px-5 py-3.5 font-body text-sm text-white/50 hover:text-white hover:bg-white/5 hover:pl-7 cursor-pointer transition-all duration-300">AI Film Production</li>
+                  <li data-val="Short Film" class="px-5 py-3.5 font-body text-sm text-white/50 hover:text-white hover:bg-white/5 hover:pl-7 cursor-pointer transition-all duration-300">Short Film</li>
+                  <li data-val="TV Commercial / Advertisement" class="px-5 py-3.5 font-body text-sm text-white/50 hover:text-white hover:bg-white/5 hover:pl-7 cursor-pointer transition-all duration-300">TV Commercial / Advertisement</li>
+                  <li data-val="UGC Content" class="px-5 py-3.5 font-body text-sm text-white/50 hover:text-white hover:bg-white/5 hover:pl-7 cursor-pointer transition-all duration-300">UGC Content</li>
+                  <li data-val="Creative Strategy" class="px-5 py-3.5 font-body text-sm text-white/50 hover:text-white hover:bg-white/5 hover:pl-7 cursor-pointer transition-all duration-300">Creative Strategy</li>
+                  <li data-val="Other" class="px-5 py-3.5 font-body text-sm text-white/50 hover:text-white hover:bg-white/5 hover:pl-7 cursor-pointer transition-all duration-300">Other</li>
+                </ul>
+              </div>
+
+              <!-- Project Description -->
+              <div class="space-y-3">
+                <label for="project_description" class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Describe Your Project <span class="text-error">*</span></label>
+                <textarea id="project_description" name="project_description" required rows="4"
+                  class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-sm resize-none transition-all pb-3 placeholder:text-outline-variant/30 leading-relaxed" 
+                  placeholder="Tell us about your vision — what you want to create, the story, the mood, the audience..."></textarea>
+              </div>
+            </div>
+
+            <!-- Step 1 Actions -->
+            <div class="flex justify-between items-center pt-10">
+              <a href="/services" class="font-label text-[10px] tracking-[0.2em] uppercase text-outline/50 hover:text-white transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+              </a>
+              <button type="button" id="next-step-btn" disabled
+                class="group flex items-center gap-4 font-headline text-sm tracking-[0.2em] uppercase font-bold px-8 py-4 transition-all duration-500 bg-white/10 text-white/30 disabled:cursor-not-allowed">
+                <span>Continue</span>
                 <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-             </button>
+              </button>
+            </div>
           </div>
+
+          <!-- ============ STEP 2 ============ -->
+          <div id="step-2" class="p-8 md:p-12 hidden" style="opacity:0; transform: translateX(40px);">
+            <div class="flex justify-between items-center mb-10">
+              <span class="font-label text-[10px] text-outline-variant uppercase tracking-widest font-bold">Step 2 — Project Details</span>
+              <span class="font-label text-[10px] text-tertiary uppercase tracking-widest font-bold">02 / 02</span>
+            </div>
+
+            <p class="font-body text-outline-variant text-sm mb-8">These fields are optional but help us prepare a more accurate proposal.</p>
+
+            <div class="space-y-8">
+              <!-- Budget Range -->
+              <div class="space-y-4">
+                <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Budget Range</label>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <label class="border border-outline-variant/20 hover:border-tertiary/50 p-4 cursor-pointer transition-all group flex items-center gap-3 has-[:checked]:border-tertiary has-[:checked]:bg-tertiary/5">
+                    <input type="radio" name="budget" value="Under $5K" class="accent-[#9093ff] w-3.5 h-3.5" />
+                    <span class="font-body text-xs text-white/60 group-hover:text-white transition-colors">Under $5K</span>
+                  </label>
+                  <label class="border border-outline-variant/20 hover:border-tertiary/50 p-4 cursor-pointer transition-all group flex items-center gap-3 has-[:checked]:border-tertiary has-[:checked]:bg-tertiary/5">
+                    <input type="radio" name="budget" value="$5K – $15K" class="accent-[#9093ff] w-3.5 h-3.5" />
+                    <span class="font-body text-xs text-white/60 group-hover:text-white transition-colors">$5K – $15K</span>
+                  </label>
+                  <label class="border border-outline-variant/20 hover:border-tertiary/50 p-4 cursor-pointer transition-all group flex items-center gap-3 has-[:checked]:border-tertiary has-[:checked]:bg-tertiary/5">
+                    <input type="radio" name="budget" value="$15K – $50K" class="accent-[#9093ff] w-3.5 h-3.5" />
+                    <span class="font-body text-xs text-white/60 group-hover:text-white transition-colors">$15K – $50K</span>
+                  </label>
+                  <label class="border border-outline-variant/20 hover:border-tertiary/50 p-4 cursor-pointer transition-all group flex items-center gap-3 has-[:checked]:border-tertiary has-[:checked]:bg-tertiary/5">
+                    <input type="radio" name="budget" value="$50K+" class="accent-[#9093ff] w-3.5 h-3.5" />
+                    <span class="font-body text-xs text-white/60 group-hover:text-white transition-colors">$50K+</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Timeline -->
+              <div class="space-y-3">
+                <label for="timeline" class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Timeline / Deadline</label>
+                <input type="text" id="timeline" name="timeline"
+                  class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-base transition-all pb-3 placeholder:text-outline-variant/30 placeholder:text-sm" 
+                  placeholder="e.g., Need delivery by August 2026" />
+              </div>
+
+              <!-- References -->
+              <div class="space-y-3">
+                <label for="references" class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Reference Links / Inspiration</label>
+                <textarea id="references" name="references" rows="2"
+                  class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-sm resize-none transition-all pb-3 placeholder:text-outline-variant/30 leading-relaxed" 
+                  placeholder="Drop any YouTube, Instagram, or portfolio links that capture the look and feel you're going for"></textarea>
+              </div>
+
+              <!-- Brief / Deck Link -->
+              <div class="space-y-3">
+                <label for="brief_link" class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">Brief / Deck Link</label>
+                <input type="url" id="brief_link" name="brief_link"
+                  class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-base transition-all pb-3 placeholder:text-outline-variant/30 placeholder:text-sm" 
+                  placeholder="Google Drive, Dropbox, or any shareable link" />
+              </div>
+
+              <!-- How did you hear -->
+              <div class="space-y-3">
+                <label for="source" class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold block">How Did You Hear About Us?</label>
+                <input type="text" id="source" name="source"
+                  class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-base transition-all pb-3 placeholder:text-outline-variant/30 placeholder:text-sm" 
+                  placeholder="e.g., Instagram, YouTube, Google, Referral..." />
+              </div>
+            </div>
+
+            <!-- Step 2 Actions -->
+            <div class="flex justify-between items-center pt-10">
+              <button type="button" id="prev-step-btn" class="font-label text-[10px] tracking-[0.2em] uppercase text-outline/50 hover:text-white transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+              </button>
+              <button type="submit" id="submit-btn"
+                class="group flex items-center gap-4 font-headline text-sm tracking-[0.2em] uppercase font-bold px-10 py-4 transition-all duration-500 bg-white text-black hover:bg-tertiary relative overflow-hidden">
+                <span class="relative z-10 submit-text">Submit Inquiry</span>
+                <span class="material-symbols-outlined text-lg relative z-10 group-hover:translate-x-1 transition-transform">send</span>
+              </button>
+            </div>
+          </div>
+
         </form>
 
-        <div class="mt-8 font-label text-[8px] text-outline-variant/50 uppercase tracking-[0.3em]">
-          NOTE: Multi-stage form logic currently functioning as UI preview stub. Backend integrations (Supabase, CRM) pending provisioning.
+        <!-- Prefer a conversation? -->
+        <div class="border-t border-white/5 px-8 md:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span class="font-body text-xs text-outline-variant/60">Prefer a live conversation?</span>
+          <a href="/book-call" class="font-headline text-[10px] tracking-[0.2em] uppercase font-bold text-tertiary hover:text-white transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">videocam</span>
+            Book a Discovery Call
+          </a>
         </div>
       </div>
     </div>
   </main>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- EmailJS Init ---
+      emailjs.init('DEm3V993EHDam4nV8');
+
+      // --- Elements ---
+      const form = document.getElementById('project-form');
+      const step1 = document.getElementById('step-1');
+      const step2 = document.getElementById('step-2');
+      const nextBtn = document.getElementById('next-step-btn');
+      const prevBtn = document.getElementById('prev-step-btn');
+      const submitBtn = document.getElementById('submit-btn');
+      const stepDot1 = document.getElementById('step-dot-1');
+      const stepDot2 = document.getElementById('step-dot-2');
+      const stepLabel1 = document.getElementById('step-label-1');
+      const stepLabel2 = document.getElementById('step-label-2');
+      const progressBar = document.getElementById('step-progress-bar');
+
+      // --- Dropdown Logic ---
+      const ddBtn = document.getElementById('svc-dropdown-btn');
+      const ddMenu = document.getElementById('svc-dd-menu');
+      const ddVal = document.getElementById('svc-category-val');
+      const ddText = document.getElementById('svc-sel-text');
+      const ddIcon = document.getElementById('svc-dd-icon');
+
+      ddBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = ddMenu.classList.contains('pointer-events-auto');
+        if (isOpen) { closeDD(); } else { openDD(); }
+      });
+
+      ddMenu.querySelectorAll('li').forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          ddVal.value = item.getAttribute('data-val');
+          ddVal.dispatchEvent(new Event('change'));
+          ddText.textContent = item.textContent;
+          ddText.classList.remove('text-outline-variant/30');
+          ddText.classList.add('text-white');
+          closeDD();
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!ddBtn.contains(e.target) && !ddMenu.contains(e.target)) closeDD();
+      });
+
+      function openDD() {
+        ddMenu.classList.remove('opacity-0','pointer-events-none','translate-y-2');
+        ddMenu.classList.add('opacity-100','pointer-events-auto','translate-y-0');
+        ddIcon.style.transform = 'rotate(180deg)';
+      }
+      function closeDD() {
+        ddMenu.classList.add('opacity-0','pointer-events-none','translate-y-2');
+        ddMenu.classList.remove('opacity-100','pointer-events-auto','translate-y-0');
+        ddIcon.style.transform = 'rotate(0deg)';
+      }
+
+      // --- Step 1 Validation ---
+      function validateStep1() {
+        const name = document.getElementById('user_name').value.trim();
+        const email = document.getElementById('user_email').value.trim();
+        const cat = ddVal.value;
+        const desc = document.getElementById('project_description').value.trim();
+        const valid = name && email && cat && desc;
+        
+        if (valid) {
+          nextBtn.disabled = false;
+          nextBtn.className = 'group flex items-center gap-4 font-headline text-sm tracking-[0.2em] uppercase font-bold px-8 py-4 transition-all duration-500 bg-white text-black hover:bg-tertiary';
+        } else {
+          nextBtn.disabled = true;
+          nextBtn.className = 'group flex items-center gap-4 font-headline text-sm tracking-[0.2em] uppercase font-bold px-8 py-4 transition-all duration-500 bg-white/10 text-white/30 disabled:cursor-not-allowed';
+        }
+      }
+
+      ['user_name','user_email','project_description'].forEach(id => {
+        document.getElementById(id).addEventListener('input', validateStep1);
+      });
+      ddVal.addEventListener('change', validateStep1);
+
+      // --- Step Navigation ---
+      nextBtn.addEventListener('click', () => {
+        // Animate step 1 out
+        step1.style.opacity = '0';
+        step1.style.transform = 'translateX(-40px)';
+        setTimeout(() => {
+          step1.classList.add('hidden');
+          step2.classList.remove('hidden');
+          // Animate step 2 in
+          requestAnimationFrame(() => {
+            step2.style.opacity = '1';
+            step2.style.transform = 'translateX(0)';
+            step2.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          });
+        }, 300);
+
+        // Update progress indicators
+        progressBar.style.width = '100%';
+        stepDot1.classList.remove('bg-tertiary','text-black');
+        stepDot1.classList.add('bg-tertiary/30','text-tertiary');
+        stepDot2.classList.remove('bg-outline-variant/20','text-outline');
+        stepDot2.classList.add('bg-tertiary','text-black');
+        stepLabel1.classList.remove('text-tertiary');
+        stepLabel1.classList.add('text-outline/50');
+        stepLabel2.classList.remove('text-outline/50');
+        stepLabel2.classList.add('text-tertiary');
+      });
+
+      prevBtn.addEventListener('click', () => {
+        step2.style.opacity = '0';
+        step2.style.transform = 'translateX(40px)';
+        setTimeout(() => {
+          step2.classList.add('hidden');
+          step1.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            step1.style.opacity = '1';
+            step1.style.transform = 'translateX(0)';
+            step1.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          });
+        }, 300);
+
+        progressBar.style.width = '0%';
+        stepDot2.classList.remove('bg-tertiary','text-black');
+        stepDot2.classList.add('bg-outline-variant/20','text-outline');
+        stepDot1.classList.remove('bg-tertiary/30','text-tertiary');
+        stepDot1.classList.add('bg-tertiary','text-black');
+        stepLabel2.classList.remove('text-tertiary');
+        stepLabel2.classList.add('text-outline/50');
+        stepLabel1.classList.remove('text-outline/50');
+        stepLabel1.classList.add('text-tertiary');
+      });
+
+      // --- Form Submit via EmailJS ---
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btnText = submitBtn.querySelector('.submit-text');
+        btnText.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-70','cursor-not-allowed');
+
+        // Gather budget
+        const budgetRadio = form.querySelector('input[name="budget"]:checked');
+        const budgetVal = budgetRadio ? budgetRadio.value : 'Not specified';
+
+        const templateParams = {
+          user_name: document.getElementById('user_name').value,
+          user_email: document.getElementById('user_email').value,
+          user_phone: document.getElementById('user_phone').value || 'Not provided',
+          service_category: ddVal.value,
+          project_description: document.getElementById('project_description').value,
+          budget: budgetVal,
+          timeline: document.getElementById('timeline').value || 'Not specified',
+          references: document.getElementById('references').value || 'None',
+          brief_link: document.getElementById('brief_link').value || 'None',
+          source: document.getElementById('source').value || 'Not specified',
+        };
+
+        emailjs.send('service_csecisb', 'template_w8a13oq', templateParams)
+          .then(() => {
+            btnText.textContent = 'Sent Successfully!';
+            setTimeout(() => { window.location.href = '/thank-you'; }, 800);
+          })
+          .catch((err) => {
+            console.error('EmailJS Error:', err);
+            btnText.textContent = 'Error — Try Again';
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-70','cursor-not-allowed');
+            setTimeout(() => { btnText.textContent = 'Submit Inquiry'; }, 4000);
+          });
+      });
+    });
+  </script>
+
+  <style>
+    #step-1, #step-2 {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+  </style>
 </Layout>

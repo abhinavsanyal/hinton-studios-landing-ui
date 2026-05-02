@@ -41,10 +41,11 @@ const servicesJsonLd = {
     <!-- Services Bento Grid -->
     <section class="px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-px bg-outline-variant/15 border-y border-outline-variant/15 max-w-[1600px] mx-auto">
       <!-- AI Film Production -->
-      <div class="md:col-span-8 bg-surface-container-low group overflow-hidden relative min-h-[600px] md:border-r border-outline-variant/10" data-reveal data-tilt data-glass>
+      <a href="/services/ai-film-production" class="md:col-span-8 bg-surface-container-low group overflow-hidden relative min-h-[600px] md:border-r border-outline-variant/10 block cursor-pointer" data-reveal data-tilt data-glass>
         <div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none">
-          <iframe class="w-full h-full pointer-events-auto scale-[1.3]" src="https://www.youtube.com/embed/EEgggVtn1B0?autoplay=1&mute=1&playsinline=1&loop=1&playlist=EEgggVtn1B0&controls=1" title="Alone | One minute horror short film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe class="w-full h-full pointer-events-none scale-[1.3]" src="https://www.youtube.com/embed/EEgggVtn1B0?autoplay=1&mute=1&playsinline=1&loop=1&playlist=EEgggVtn1B0&controls=0" title="Alone | One minute horror short film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+        <div class="absolute inset-0 border border-outline-variant/10 group-hover:border-tertiary/30 transition-colors duration-500 z-20 pointer-events-none"></div>
         <div class="relative h-full p-8 md:p-12 flex flex-col justify-between z-10 viewfinder-corner pointer-events-none">
           <div class="flex justify-between items-start">
             <div class="font-label text-[9px] tracking-widest text-primary/70 uppercase bg-black/40 backdrop-blur px-2 py-1 border border-outline-variant/30">
@@ -53,35 +54,37 @@ const servicesJsonLd = {
             <span class="material-symbols-outlined text-tertiary text-4xl">auto_awesome</span>
           </div>
           <div>
-            <h3 class="font-headline text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tighter">AI Film Production</h3>
+            <h3 class="font-headline text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tighter group-hover:text-tertiary transition-colors duration-500">AI Film Production</h3>
             <p class="font-body text-on-surface-variant max-w-md text-sm leading-relaxed">
               Cinematic narratives built on profound human storytelling, shot entirely using 100% generative AI. Delivering Hollywood-grade visuals without the constraints of physical cameras.
             </p>
-            <a href="/services/ai-film-production" class="mt-6 inline-flex items-center gap-3 font-headline text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary hover:text-white transition-colors pointer-events-auto">EXPLORE SERVICE <span class="material-symbols-outlined text-sm">arrow_right_alt</span></a>
+            <span class="mt-6 inline-flex items-center gap-3 font-headline text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary group-hover:text-white transition-colors">EXPLORE SERVICE <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-300">arrow_right_alt</span></span>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Short Films -->
-      <div class="md:col-span-4 bg-surface-container group overflow-hidden relative min-h-[600px]" data-reveal style="--reveal-delay: 80ms">
+      <a href="/services/short-films" class="md:col-span-4 bg-surface-container group overflow-hidden relative min-h-[600px] block cursor-pointer" data-reveal style="--reveal-delay: 80ms">
         <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80 z-10 pointer-events-none"></div>
-        <iframe class="absolute inset-0 w-full h-full pointer-events-auto scale-[1.3]" src="https://www.youtube.com/embed/icHxNil5dvg?autoplay=1&mute=1&loop=1&playlist=icHxNil5dvg&controls=1" title="Star Performer of the month | One minute horror short film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="absolute inset-0 w-full h-full pointer-events-none scale-[1.3]" src="https://www.youtube.com/embed/icHxNil5dvg?autoplay=1&mute=1&loop=1&playlist=icHxNil5dvg&controls=0" title="Star Performer of the month | One minute horror short film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="absolute inset-0 border border-outline-variant/10 group-hover:border-tertiary/30 transition-colors duration-500 z-20 pointer-events-none"></div>
         <div class="relative h-full p-8 md:p-12 flex flex-col justify-between z-20 viewfinder-corner pointer-events-none">
           <div class="font-label text-[9px] tracking-widest text-primary/70 uppercase">CAT: NARRATIVE // LENS: 35MM_PRIME</div>
           <div>
-            <h3 class="font-headline text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tighter">Short Films</h3>
+            <h3 class="font-headline text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tighter group-hover:text-tertiary transition-colors duration-500">Short Films</h3>
             <p class="font-body text-on-surface-variant text-sm leading-relaxed">
               Boutique storytelling designed for high-impact premieres. Human scripts brought to life through advanced AI production workflows.
             </p>
-            <a href="/services/short-films" class="mt-6 inline-flex items-center gap-3 font-headline text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary hover:text-white transition-colors pointer-events-auto">EXPLORE SERVICE <span class="material-symbols-outlined text-sm">arrow_right_alt</span></a>
+            <span class="mt-6 inline-flex items-center gap-3 font-headline text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary group-hover:text-white transition-colors">EXPLORE SERVICE <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-300">arrow_right_alt</span></span>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- TV Commercials -->
       <a href="/services/tv-commercials" class="md:col-span-4 group overflow-hidden relative min-h-[420px] block cursor-pointer" data-reveal>
-        <img src="/assets/card-tv-commercials.png" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/60 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-500"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0f0a2e] via-[#1a1145] to-[#0d0b1a] transition-all duration-700"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-[#1a1250] via-[#241660] to-[#0f0a2e]"></div>
+        <div class="absolute bottom-0 right-0 w-[60%] h-[60%] bg-[radial-gradient(circle_at_80%_80%,rgba(144,147,255,0.08),transparent_60%)] pointer-events-none"></div>
         <div class="absolute inset-0 border border-outline-variant/10 group-hover:border-tertiary/30 transition-colors duration-500"></div>
         <div class="relative h-full p-8 md:p-10 flex flex-col justify-between z-10">
           <span class="font-label text-[9px] tracking-widest text-primary/50 uppercase">BROADCAST_MOD: 4K_UHD</span>
@@ -95,10 +98,11 @@ const servicesJsonLd = {
         </div>
       </a>
 
-      <!-- UGCs -->
+      <!-- UGC Content -->
       <a href="/services/ugc-content" class="md:col-span-4 group overflow-hidden relative min-h-[420px] block cursor-pointer" data-reveal style="--reveal-delay: 80ms">
-        <img src="/assets/card-ugc-content.png" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/60 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-500"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0a1a1f] via-[#0f2027] to-[#0b1215] transition-all duration-700"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-[#0d2530] via-[#132d36] to-[#0a1a1f]"></div>
+        <div class="absolute top-0 left-0 w-[50%] h-[50%] bg-[radial-gradient(circle_at_20%_20%,rgba(45,212,191,0.06),transparent_60%)] pointer-events-none"></div>
         <div class="absolute inset-0 border border-outline-variant/10 group-hover:border-tertiary/30 transition-colors duration-500"></div>
         <div class="relative h-full p-8 md:p-10 flex flex-col justify-between z-10">
           <div class="flex items-center gap-2">
@@ -117,8 +121,9 @@ const servicesJsonLd = {
 
       <!-- Creative Strategy -->
       <a href="/services/creative-strategy" class="md:col-span-4 group overflow-hidden relative min-h-[420px] block cursor-pointer" data-reveal style="--reveal-delay: 160ms">
-        <img src="/assets/card-creative-strategy.png" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/60 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-500"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0d0f1a] via-[#151832] to-[#0a0b14] transition-all duration-700"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-[#121540] via-[#1c2050] to-[#0d0f1a]"></div>
+        <div class="absolute top-0 right-0 w-[40%] h-[70%] bg-[radial-gradient(circle_at_70%_30%,rgba(144,147,255,0.05),transparent_60%)] pointer-events-none"></div>
         <div class="absolute inset-0 border border-outline-variant/10 group-hover:border-tertiary/30 transition-colors duration-500"></div>
         <div class="relative h-full p-8 md:p-10 flex flex-col justify-between z-10">
           <span class="font-label text-[9px] tracking-widest text-primary/50 uppercase">CORE_INTEL: ARCHITECTURE</span>
@@ -133,11 +138,11 @@ const servicesJsonLd = {
       </a>
     </section>
 
-    <!-- Viral CTA / Inquiry Form -->
+    <!-- Viral CTA -->
     <section id="contact" class="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-black">
       <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 40% at 30% 50%, rgba(144, 147, 255, 0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 35% at 70% 50%, rgba(248, 113, 113, 0.03) 0%, transparent 70%);"></div>
-      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start relative z-10">
-        <div class="lg:sticky lg:top-40" data-reveal>
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
+        <div data-reveal>
           <span class="font-label text-[12px] tracking-[0.4em] uppercase text-tertiary mb-8 block font-bold">Protocol: Rapid Expansion</span>
           <h2 class="font-headline text-[18vw] md:text-[10vw] font-bold tracking-tighter text-white leading-[0.75] mb-12">
             GO<br /><span class="text-tertiary italic">VIRAL.</span>
@@ -165,196 +170,39 @@ const servicesJsonLd = {
           </div>
         </div>
 
-        <div class="bg-black/40 backdrop-blur-3xl p-6 md:p-16 border border-white/5 shadow-2xl" data-reveal style="--reveal-delay: 160ms">
-          <div class="flex justify-between items-center mb-12 md:mb-16">
-            <span class="font-label text-[10px] text-outline-variant uppercase tracking-widest font-bold">Transmission_Socket: 004</span>
-            <div class="flex gap-1">
-              <div class="w-1 h-1 bg-tertiary rounded-full"></div>
-              <div class="w-1 h-1 bg-tertiary/30 rounded-full"></div>
-              <div class="w-1 h-1 bg-tertiary/10 rounded-full"></div>
+        <!-- Dual CTA Panel -->
+        <div class="space-y-6" data-reveal style="--reveal-delay: 160ms">
+          <!-- Get A Quote CTA -->
+          <a href="/start-project" class="group block bg-black/40 backdrop-blur-3xl p-8 md:p-12 border border-white/5 hover:border-tertiary/40 transition-all duration-500 shadow-2xl">
+            <div class="flex justify-between items-start mb-6">
+              <span class="material-symbols-outlined text-tertiary text-3xl">mail</span>
+              <span class="font-label text-[9px] text-outline-variant tracking-widest uppercase">Async</span>
             </div>
-          </div>
+            <h3 class="font-headline text-2xl md:text-3xl font-bold text-white uppercase tracking-tighter mb-3 group-hover:text-tertiary transition-colors duration-500">Get A Quote</h3>
+            <p class="font-body text-sm text-outline-variant leading-relaxed mb-6">Submit your project brief and receive a tailored proposal within 24–48 hours.</p>
+            <span class="inline-flex items-center gap-3 font-headline text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary group-hover:text-white transition-colors">
+              START PROJECT <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-300">arrow_right_alt</span>
+            </span>
+          </a>
 
-          <form id="contact-form" class="space-y-10 md:space-y-12">
-            <!-- FormSubmit config -->
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_subject" value="New Project Transmission - Hinton Studios" />
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
-              <div class="space-y-4">
-                <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Name</label>
-                <input type="text" name="Name" required class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-headline uppercase text-lg placeholder:text-outline-variant/20 transition-all pb-4" placeholder="YOUR NAME" />
-              </div>
-              <div class="space-y-4">
-                <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Email</label>
-                <input type="email" name="Email" required class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-headline uppercase text-lg placeholder:text-outline-variant/20 transition-all pb-4" placeholder="EMAIL ADDRESS" />
-              </div>
+          <!-- Book A Call CTA -->
+          <a href="/book-call" class="group block bg-black/40 backdrop-blur-3xl p-8 md:p-12 border border-white/5 hover:border-tertiary/40 transition-all duration-500 shadow-2xl">
+            <div class="flex justify-between items-start mb-6">
+              <span class="material-symbols-outlined text-tertiary text-3xl">videocam</span>
+              <span class="font-label text-[9px] text-outline-variant tracking-widest uppercase">Live</span>
             </div>
-            
-            <div class="space-y-4 relative z-50" id="custom-dropdown-container">
-              <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Category of Service</label>
-              <input type="hidden" name="Category" id="category-input" />
-              <button type="button" id="dropdown-button" class="w-full bg-transparent border-0 border-b border-white/10 text-left font-headline uppercase text-lg text-outline-variant/20 hover:border-tertiary transition-all pb-4 outline-none cursor-pointer flex justify-between items-center">
-                <span id="dropdown-selected-text" class="transition-colors duration-300">SELECT CATEGORY</span>
-                <span class="material-symbols-outlined text-outline-variant/30 text-xl transition-transform duration-300" id="dropdown-icon">expand_more</span>
-              </button>
-              
-              <ul id="dropdown-menu" class="absolute top-[80%] left-0 w-full mt-2 bg-[#030303] border border-white/10 shadow-2xl z-50 opacity-0 pointer-events-none translate-y-2 transition-all duration-300 flex flex-col py-2 rounded-sm">
-                <li data-val="Feature Film" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">FEATURE FILM</li>
-                <li data-val="Advertisement" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">ADVERTISEMENT</li>
-                <li data-val="UGC" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">UGC</li>
-                <li data-val="Short Film" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">SHORT FILM</li>
-                <li data-val="Other" class="px-6 py-4 font-headline text-sm uppercase text-white/50 hover:text-white hover:bg-white/5 hover:pl-8 cursor-pointer transition-all duration-300">OTHER</li>
-              </ul>
-            </div>
+            <h3 class="font-headline text-2xl md:text-3xl font-bold text-white uppercase tracking-tighter mb-3 group-hover:text-tertiary transition-colors duration-500">Book A Call</h3>
+            <p class="font-body text-sm text-outline-variant leading-relaxed mb-6">Schedule a free discovery call with our team. Pick a time that works for you.</p>
+            <span class="inline-flex items-center gap-3 font-headline text-[10px] font-bold tracking-[0.3em] uppercase text-tertiary group-hover:text-white transition-colors">
+              VIEW CALENDAR <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-300">arrow_right_alt</span>
+            </span>
+          </a>
 
-            <div class="space-y-4">
-              <label class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Describe The Idea</label>
-              <textarea name="Idea_Description" required rows="4" class="w-full bg-transparent border-0 border-b border-white/10 focus:border-tertiary focus:ring-0 text-white font-body text-sm placeholder:text-outline-variant/20 resize-none transition-all pb-4" placeholder="DESCRIBE THE UNIMAGINABLE..."></textarea>
-            </div>
-            <button type="submit" id="submit-action-btn" disabled class="w-full py-6 md:py-8 bg-white/10 text-white/30 font-headline font-black text-sm tracking-[0.3em] transition-all duration-500 flex justify-between items-center px-6 md:px-10 group relative overflow-hidden disabled:cursor-not-allowed">
-              <span class="relative z-10 btn-text">INITIATE PHASE ONE</span>
-              <span class="material-symbols-outlined relative z-10 group-hover:translate-x-3 transition-transform duration-500">arrow_right_alt</span>
-              <div class="absolute inset-0 bg-tertiary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
-            </button>
-          </form>
+          <p class="font-label text-[9px] text-outline-variant/40 uppercase tracking-[0.3em] text-center pt-2">
+            Selective Engagement — Now Booking Q2 / Q3 2026
+          </p>
         </div>
       </div>
     </section>
   </main>
-  
-  <script is:inline>
-    // Background Submission Handler
-    document.addEventListener('DOMContentLoaded', () => {
-      // Custom Dropdown Logic
-      const dropdownBtn = document.getElementById('dropdown-button');
-      const dropdownMenu = document.getElementById('dropdown-menu');
-      const categoryInput = document.getElementById('category-input');
-      const selectedText = document.getElementById('dropdown-selected-text');
-      const dropdownIcon = document.getElementById('dropdown-icon');
-      
-      if(dropdownBtn) {
-        dropdownBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const isOpen = dropdownMenu.classList.contains('pointer-events-auto');
-          if (isOpen) {
-            closeDropdown();
-          } else {
-            dropdownMenu.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
-            dropdownMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-            dropdownIcon.style.transform = 'rotate(180deg)';
-          }
-        });
-
-        dropdownMenu.querySelectorAll('li').forEach(item => {
-          item.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const val = item.getAttribute('data-val');
-            categoryInput.value = val;
-            
-            // Dispatch event to trigger validation check
-            categoryInput.dispatchEvent(new Event('change'));
-            
-            selectedText.textContent = item.textContent;
-            selectedText.classList.remove('text-outline-variant/20', 'text-[#ff4545]');
-            selectedText.classList.add('text-white');
-            closeDropdown();
-          });
-        });
-
-        document.addEventListener('click', (e) => {
-          if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            closeDropdown();
-          }
-        });
-      }
-
-      function closeDropdown() {
-        if(dropdownMenu) {
-          dropdownMenu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-          dropdownMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-          dropdownIcon.style.transform = 'rotate(0deg)';
-        }
-      }
-
-      const contactForm = document.getElementById('contact-form');
-      if(contactForm) {
-        // Validation Logic
-        const submitBtn = document.getElementById('submit-action-btn');
-        const requiredInputs = contactForm.querySelectorAll('[required], #category-input');
-        
-        function validateForm() {
-          let isValid = true;
-          // Check standard inputs
-          const textInputs = contactForm.querySelectorAll('input[type="text"], input[type="email"], textarea');
-          textInputs.forEach(input => {
-            if(!input.value.trim() && input.hasAttribute('required')) isValid = false;
-          });
-          // Check hidden dropdown input
-          if(!categoryInput.value) { isValid = false; }
-          
-          if(isValid) {
-            submitBtn.disabled = false;
-            submitBtn.className = "w-full py-6 md:py-8 bg-white text-black font-headline font-black text-sm tracking-[0.3em] hover:text-white transition-all duration-500 flex justify-between items-center px-6 md:px-10 group relative overflow-hidden focus:outline-none";
-          } else {
-            submitBtn.disabled = true;
-            submitBtn.className = "w-full py-6 md:py-8 bg-white/10 text-white/30 font-headline font-black text-sm tracking-[0.3em] transition-all duration-500 flex justify-between items-center px-6 md:px-10 group relative overflow-hidden disabled:cursor-not-allowed";
-          }
-        }
-        
-        requiredInputs.forEach(input => {
-          input.addEventListener('input', validateForm);
-          input.addEventListener('change', validateForm);
-        });
-
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const btn = this.querySelector('button[type="submit"]');
-          const btnText = btn.querySelector('.btn-text');
-          const originalText = btnText.textContent;
-          
-          if(!categoryInput.value) {
-            selectedText.classList.add('text-[#ff4545]');
-            selectedText.textContent = "REQUIRED: SELECT CATEGORY";
-            setTimeout(() => {
-              if(!categoryInput.value) {
-                selectedText.classList.remove('text-[#ff4545]');
-                selectedText.textContent = "SELECT CATEGORY";
-              }
-            }, 3000);
-            return;
-          }
-
-          btnText.textContent = 'TRANSMITTING...';
-          btn.disabled = true;
-
-          const formData = new FormData(this);
-
-          fetch('https://formsubmit.co/ajax/hinton.motion@gmail.com', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json'
-            },
-            body: formData
-          })
-          .then(response => response.json())
-          .then(data => {
-            btnText.textContent = 'TRANSMISSION SENT';
-            // Redirect to thank-you page with GA conversion tracking
-            setTimeout(() => {
-              window.location.href = '/thank-you';
-            }, 800);
-          })
-          .catch(error => {
-            btnText.textContent = 'NETWORK ERROR';
-            setTimeout(() => {
-              btnText.textContent = originalText;
-              btn.disabled = false;
-            }, 4000);
-          });
-        });
-      }
-    });
-  </script>
 </Layout>

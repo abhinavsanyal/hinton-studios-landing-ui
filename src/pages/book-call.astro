@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Book a Discovery Call — Hinton Studios" 
+  description="Schedule a free discovery call with the Hinton Studios team to discuss your AI filmmaking project. Pick a time that works for you."
+  keywords="book call ai filmmaking studio, schedule meeting hinton studios, ai film production consultation, ai video call booking"
+>
+  <main class="min-h-screen pt-32 pb-24 bg-surface relative overflow-hidden">
+    <!-- Grid Background -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
+    <!-- Ambient Glow -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 40% at 50% 40%, rgba(144, 147, 255, 0.08) 0%, transparent 70%);"></div>
+
+    <div class="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
+      
+      <!-- Header -->
+      <header class="mb-12 text-center" data-reveal>
+        <span class="font-label text-[10px] tracking-[0.4em] uppercase text-tertiary mb-6 block font-bold flex items-center justify-center gap-4">
+          <div class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse-soft"></div>
+          OPEN CHANNEL
+          <div class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse-soft"></div>
+        </span>
+        <h1 class="font-headline text-4xl md:text-6xl font-bold uppercase tracking-tighter text-white mb-6 leading-[0.9]">Book a<br/><span class="text-tertiary italic">Discovery Call.</span></h1>
+        <p class="font-body text-on-surface-variant leading-relaxed max-w-lg mx-auto text-sm">
+          Let's talk about your vision. Pick a time that works for you and we'll hop on a call to discuss your project, answer questions, and explore how AI-native production can bring your ideas to life.
+        </p>
+      </header>
+
+      <!-- Cal.com Embed Container -->
+      <div class="bg-black/40 backdrop-blur-xl border border-white/5 shadow-2xl overflow-hidden" data-reveal style="--reveal-delay: 120ms">
+        <div class="flex justify-between items-center px-8 py-5 border-b border-white/5">
+          <span class="font-label text-[10px] text-outline-variant uppercase tracking-widest font-bold flex items-center gap-3">
+            <span class="material-symbols-outlined text-tertiary text-base">calendar_month</span>
+            SELECT A TIME SLOT
+          </span>
+          <div class="flex gap-1">
+            <div class="w-1 h-1 bg-tertiary rounded-full"></div>
+            <div class="w-1 h-1 bg-tertiary/30 rounded-full"></div>
+            <div class="w-1 h-1 bg-tertiary/10 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Cal.com iframe -->
+        <div class="relative min-h-[650px] bg-black/20" id="cal-container">
+          <iframe 
+            src="https://cal.com/abhinava-sanyal-jdq1dz?theme=dark&layout=month_view" 
+            width="100%" 
+            height="100%"
+            style="min-height: 650px; border: 0;"
+            frameborder="0"
+            loading="lazy"
+            title="Book a Discovery Call with Hinton Studios"
+            allow="payment"
+          ></iframe>
+
+          <!-- Loading State -->
+          <div id="cal-loader" class="absolute inset-0 flex items-center justify-center bg-black/60 pointer-events-none transition-opacity duration-500">
+            <div class="text-center">
+              <div class="w-8 h-8 border-2 border-tertiary/30 border-t-tertiary rounded-full animate-spin mx-auto mb-4"></div>
+              <span class="font-label text-[10px] tracking-[0.3em] uppercase text-outline">Loading calendar...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fallback / Prefer form -->
+      <div class="mt-8 text-center" data-reveal style="--reveal-delay: 200ms">
+        <p class="font-body text-xs text-outline-variant/50 mb-4">
+          Can't find a suitable time? No worries.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <a href="/start-project" class="font-headline text-[10px] tracking-[0.2em] uppercase font-bold text-tertiary hover:text-white transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">mail</span>
+            Submit a Project Inquiry Instead
+          </a>
+          <span class="text-outline-variant/20 hidden sm:inline">|</span>
+          <a href="https://cal.com/abhinava-sanyal-jdq1dz" target="_blank" rel="noopener noreferrer" class="font-headline text-[10px] tracking-[0.2em] uppercase font-bold text-outline/50 hover:text-white transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+            Open Calendar Directly
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script is:inline>
+    // Hide loader once iframe loads
+    const iframe = document.querySelector('#cal-container iframe');
+    const loader = document.getElementById('cal-loader');
+    if (iframe && loader) {
+      iframe.addEventListener('load', () => {
+        loader.style.opacity = '0';
+        setTimeout(() => { loader.style.display = 'none'; }, 500);
+      });
+      // Fallback: hide loader after 8s regardless
+      setTimeout(() => {
+        if (loader) { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 500); }
+      }, 8000);
+    }
+  </script>
+</Layout>
